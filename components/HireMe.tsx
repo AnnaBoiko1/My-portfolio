@@ -1,5 +1,7 @@
 'use client'
 import { useState } from 'react'  
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCommentDots } from '@fortawesome/free-regular-svg-icons'
 
 export default function HireMe() {
   const [isVisible, setIsVisible] = useState<boolean>(true) 
@@ -18,6 +20,7 @@ export default function HireMe() {
         className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-sm font-semibold"
       >
         Hire Me
+        <FontAwesomeIcon icon={faCommentDots} className="w-4 h-4" />
       </button>
       {isVisible && (
         <button 
