@@ -14,7 +14,7 @@ export default function HireMe() {
   }
   
 return (
-  <div className="fixed bottom-28 right-6 z-[1000] flex items-center gap-3">
+  <div className="fixed bottom-28 right-6 z-[1000] flex items-center gap-1">
     <span className="text-gray-800 font-semibold text-sm whitespace-nowrap">
       Hire Me
     </span>
@@ -30,7 +30,7 @@ return (
    
     <button 
       onClick={() => setIsVisible(false)}
-      className="w-6 h-6 text-gray-500 hover:text-gray-700 flex items-center justify-center text-xs hover:scale-110 transition-all duration-200 ml-0"
+      className="w-6 h-6 text-gray-500 hover:text-gray-700 flex items-center justify-center text-xs hover:scale-110 transition-all duration-200 "
       title="Close"
     >
       ×
