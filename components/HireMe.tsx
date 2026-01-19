@@ -20,17 +20,17 @@ return (
     </span>
     <button 
       onClick={handleClick}
-      className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center p-0"
+      className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center p-0"
       title="Hire Me"
     >
-      <FontAwesomeIcon icon={faCommentDots} className="w-5 h-5" />
+      <FontAwesomeIcon icon={faCommentDots}  size="2x" className="w-8 h-8" />
     </button>
     
     
    
     <button 
       onClick={() => setIsVisible(false)}
-      className="w-6 h-6 text-gray-500 hover:text-gray-700 flex items-center justify-center text-xs hover:scale-110 transition-all duration-200 ml-auto"
+      className="w-6 h-6 text-gray-500 hover:text-gray-700 flex items-center justify-center text-xs hover:scale-110 transition-all duration-200 ml-0"
       title="Close"
     >
       ×
