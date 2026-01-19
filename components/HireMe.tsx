@@ -13,23 +13,30 @@ export default function HireMe() {
     setIsVisible(false)  
   }
   
-  return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2">
-      <button 
-        onClick={handleClick}
-        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-sm font-semibold"
-      >
-        Hire Me
-        <FontAwesomeIcon icon={faCommentDots} className="w-4 h-4" />
-      </button>
-      {isVisible && (
-        <button 
-          onClick={() => setIsVisible(false)}
-          className="w-8 h-8 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full flex items-center justify-center text-xs shadow-md"
-        >
-          ×
-        </button>
-      )}
-    </div>
-  )
+return (
+  <div className="fixed bottom-8 right-6 z-[1000] flex items-center gap-3">
+    <span className="text-gray-800 font-semibold text-sm whitespace-nowrap">
+      Hire Me
+    </span>
+    <button 
+      onClick={handleClick}
+      className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center p-0"
+      title="Hire Me"
+    >
+      <FontAwesomeIcon icon={faCommentDots} className="w-5 h-5" />
+    </button>
+    
+    
+   
+    <button 
+      onClick={() => setIsVisible(false)}
+      className="w-6 h-6 text-gray-500 hover:text-gray-700 flex items-center justify-center text-xs hover:scale-110 transition-all duration-200 ml-auto"
+      title="Close"
+    >
+      ×
+    </button>
+  </div>
+)
+
+
 }
