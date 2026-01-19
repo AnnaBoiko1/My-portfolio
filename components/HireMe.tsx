@@ -14,7 +14,7 @@ export default function HireMe() {
   }
   
 return (
-  <div className="fixed bottom-8 right-6 z-[1000] flex items-center gap-3">
+  <div className="fixed bottom-28 right-6 z-[1000] flex items-center gap-3">
     <span className="text-gray-800 font-semibold text-sm whitespace-nowrap">
       Hire Me
     </span>
