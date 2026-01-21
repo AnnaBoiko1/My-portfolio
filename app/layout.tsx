@@ -4,6 +4,7 @@ import "./globals.css";
 import HireMe from '@/components/HireMe'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+
 config.autoAddCss = false
 
 const geistSans = Geist({
