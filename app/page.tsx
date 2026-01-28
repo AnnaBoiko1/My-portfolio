@@ -44,16 +44,39 @@ export default function Home() {
 
       {}
       <Box sx={{ width: '100%', bottom: 0, position: "fixed", left: 0, right: 0 }}>
-        <BottomNavigation
-          value={pathname}
-          onChange={(e, newValue) => router.push(newValue)}
-          showLabels
-          sx={{ bgcolor: 'background.paper' }}
-        >
+        <BottomNavigation 
+          value={pathname} 
+          onChange={(e, newValue) => router.push(newValue)} 
+          showLabels 
+          sx={{ 
+      bgcolor: 'transparent', 
+      '& .MuiBottomNavigationAction-root': {
+        color: 'var(--text)',  // Сірий для неактивних (включає текст та іконку)
+        '& .MuiBottomNavigationAction-label': {
+          fontSize: '1.2rem', 
+          letterSpacing: '0.05em',
+          paddingBottom: 10,
+          color: 'inherit'    // Спадкує колір від root
+        }
+      },
+      '& .MuiBottomNavigationAction-root.Mui-selected': {
+        color: 'purple !important',  // Фіолетовий для активної (текст + іконка)
+        '& .MuiBottomNavigationAction-label': {
+          color: 'purple !important'
+        },
+        '& svg': {
+          color: 'var(--purple) !important'  // Окремо для іконки
+        }
+      }
+    }}
+>
           <BottomNavigationAction label="Home" value="/" />
+          <Typography sx={{fontSize: '1.2rem', pb: 10}}>|</Typography>
           <BottomNavigationAction label="About" value="/about" />
+          <Typography sx={{fontSize: '1.2rem', pb: 10}}>|</Typography>
           <BottomNavigationAction label="Projects" value="/projects" />
-          <BottomNavigationAction label="Contact" value="/contact" />
+          <Typography sx={{}}>|</Typography>
+          <BottomNavigationAction label="Contact" value="/contact" /> 
         </BottomNavigation>
       </Box>
     </>
