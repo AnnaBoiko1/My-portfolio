@@ -4,6 +4,7 @@ import "./globals.css";
 import HireMe from '@/components/HireMe'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import BackgroundCanva from '@/components/BackgroundCanva';
 
 config.autoAddCss = false
 
@@ -32,7 +33,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <BackgroundCanva>
         {children}
+        </BackgroundCanva>
         <HireMe />
       </body>
     </html>
