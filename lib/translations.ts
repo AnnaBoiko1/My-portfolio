@@ -44,6 +44,9 @@ export const translations = {
         projects_title: "Projects",
         projects_link_to_project: "Link to project",
         projects_feedback: "Feedback",
+        projects_filter_all: "All",
+        projects_filter_development: "Software Development",
+        projects_filter_data_analytics: "Data Analytics",
 
         // Contact Page
         contact_header: "Contact",
@@ -125,6 +128,9 @@ export const translations = {
         projects_title: "Проєкти",
         projects_link_to_project: "Посилання на проєкт",
         projects_feedback: "Відгуки",
+        projects_filter_all: "Всі",
+        projects_filter_development: "Розробка ПЗ",
+        projects_filter_data_analytics: "Аналітика даних",
 
         // Contact Page
         contact_header: "Контакти",
@@ -205,6 +211,9 @@ export const translations = {
         projects_title: "Projets",
         projects_link_to_project: "Lien vers le projet",
         projects_feedback: "Avis",
+        projects_filter_all: "Tous",
+        projects_filter_development: "Développement Logiciel",
+        projects_filter_data_analytics: "Analyse de Données",
 
         // Contact Page
         contact_header: "Contact",
@@ -285,6 +294,9 @@ export const translations = {
         projects_title: "Projekte",
         projects_link_to_project: "Link zum Projekt",
         projects_feedback: "Feedback",
+        projects_filter_all: "Alle",
+        projects_filter_development: "Softwareentwicklung",
+        projects_filter_data_analytics: "Datenanalyse",
 
         // Contact Page
         contact_header: "Kontakt",
