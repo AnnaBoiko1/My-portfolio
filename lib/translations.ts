@@ -23,7 +23,8 @@ export const translations = {
         home_status_fulltime: "Open to full-time · Toronto",
         home_status_preference: "Hybrid / Remote welcome",
         home_work_together: "Let's work together",
-        home_work_description: "From crafting intuitive user experiences and conducting insightful data analysis to building scalable web systems and dynamic single-page applications, I collaborate with passionate people <strong>to bring ambitious ideas to life</strong>, ensuring they are both innovative and accessible.",
+        home_work_description: "I build full-stack web applications and data analytics solutions — from interactive dashboards and ML models to responsive React interfaces and Rails backends.<br /><br />If you have a problem that needs engineering or/and analytical thinking, I'd love to hear about it.",
+        home_get_in_touch: "Get in touch",
         home_download_cv: "Download résumé",
 
         // About Page
@@ -109,7 +110,8 @@ export const translations = {
         home_status_fulltime: "Open to full-time · Торонто",
         home_status_preference: "Гібрид / Віддалено",
         home_work_together: "Давайте працювати разом",
-        home_work_description: "Від створення інтуїтивних інтерфейсів та проведення глибокого аналізу даних до розробки масштабованих веб-систем та веб-додатків. Я співпрацюю з натхненними людьми, щоб <strong>втілювати амбітні ідеї в життя</strong>, гарантуючи їх інноваційність та доступність.",
+        home_work_description: "Я створюю full-stack веб-додатки та рішення для аналітики даних — від інтерактивних дашбордів і ML-моделей до адаптивних інтерфейсів React та бекендів Rails.<br /><br />Якщо у вас є завдання, яке вимагає інженерного та/або аналітичного мислення, я буду рада його обговорити.",
+        home_get_in_touch: "Зв'язатися",
         home_download_cv: "Завантажити резюме",
 
         // About Page
@@ -194,7 +196,8 @@ export const translations = {
         home_status_fulltime: "Disponible à plein temps · Toronto",
         home_status_preference: "Hybride / Télétravail bienvenus",
         home_work_together: "Travaillons ensemble",
-        home_work_description: "De la création d'expériences utilisateur intuitives et la réalisation d'analyses de données approfondies à la conception de systèmes web évolutifs et de SPA dynamiques, je collabore avec des passionnés pour <strong>donner vie à des idées ambitieuses</strong>, en m'assurant qu'elles sont à la fois innovantes et accessibles.",
+        home_work_description: "Je conçois des applications web full-stack et des solutions d'analyse de données — des tableaux de bord interactifs et modèles de ML aux interfaces React réactives et backends Rails.<br /><br />Si vous avez un problème qui nécessite une réflexion technique et/ou analytique, j'aimerais beaucoup en discuter.",
+        home_get_in_touch: "Contactez-moi",
         home_download_cv: "Télécharger CV",
 
         // About Page
@@ -279,7 +282,8 @@ export const translations = {
         home_status_fulltime: "Bereit für Vollzeit · Toronto",
         home_status_preference: "Hybrid / Remote willkommen",
         home_work_together: "Lass uns zusammenarbeiten",
-        home_work_description: "Von der Gestaltung intuitiver Benutzererlebnisse und der Durchführung aussagekräftiger Datenanalysen bis hin zum Aufbau skalierbarer Websysteme und dynamischer SPAs arbeite ich mit leidenschaftlichen Menschen zusammen, <strong>um ehrgeizige Ideen zum Leben zu erwecken</strong> und sicherzustellen, dass sie sowohl innovativ als auch zugänglich sind.",
+        home_work_description: "Ich entwickle Full-Stack-Webanwendungen und Datenanalyselösungen — von interaktiven Dashboards und ML-Modellen bis hin zu responsiven React-Schnittstellen und Rails-Backends.<br /><br />Wenn Sie ein Problem haben, das technisches und/oder analytisches Denken erfordert, würde ich mich freuen, davon zu hören.",
+        home_get_in_touch: "Kontakt aufnehmen",
         home_download_cv: "Lebenslauf herunterladen",
 
         // About Page

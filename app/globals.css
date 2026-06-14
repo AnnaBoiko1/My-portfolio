@@ -24,6 +24,16 @@
   --dot-color: var(--blue);
   --lang-menu-bg: var(--blue);
   --lang-menu-text: var(--text);
+  --btn-cv-bg: var(--purple);
+  --btn-cv-border: var(--purple);
+  --btn-cv-text: #ffffff;
+  --btn-cv-hover-bg: #8e24aa;
+  --btn-cv-shadow: 0 4px 14px rgba(167, 73, 214, 0.3);
+  --btn-cv-hover-shadow: 0 6px 20px rgba(167, 73, 214, 0.5);
+  --btn-touch-bg: transparent;
+  --btn-touch-border: var(--purple);
+  --btn-touch-text: var(--purple);
+  --btn-touch-hover-bg: rgba(167, 73, 214, 0.08);
 }
 
 [data-theme='dark'],
@@ -50,6 +60,16 @@
   --dot-color: var(--purple);
   --lang-menu-bg: var(--blue);
   --lang-menu-text: rgba(31, 167, 188, 0.15);
+  --btn-cv-bg: var(--purple);
+  --btn-cv-border: var(--purple);
+  --btn-cv-text: #ffffff;
+  --btn-cv-hover-bg: #b87cf8;
+  --btn-cv-shadow: 0 4px 14px rgba(192, 132, 252, 0.3);
+  --btn-cv-hover-shadow: 0 6px 20px rgba(192, 132, 252, 0.5);
+  --btn-touch-bg: transparent;
+  --btn-touch-border: var(--purple);
+  --btn-touch-text: var(--purple);
+  --btn-touch-hover-bg: rgba(192, 132, 252, 0.1);
 }
 
 body {

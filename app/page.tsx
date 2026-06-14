@@ -193,58 +193,61 @@ export default function Home() {
           <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
           <Typography variant='h5' sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('home_work_description') }} />
 
-          <Button
-            href="/cv.pdf"
-            download="Anna-Boiko-CV.pdf"
-            sx={{
-              mt: 4,
-              px: 6,
-              py: 1,
-              mb: 15,
-              fontSize: { xs: '1.1rem', md: '1.3rem' },
-              fontWeight: 600,
-              color: 'var(--btn-text)',
-              bgcolor: 'transparent',
-              textTransform: 'none',
-              display: 'inline-flex',
-              textShadow: `
-                1px 1px 1px rgba(0,0,0,0.3),        
-                0 0 3px rgba(255,255,255,0.4)
-                `,
-              backgroundImage: `linear-gradient(
-                45deg, 
-                transparent 25%, 
-                var(--btn-stripes) 25%, 
-                var(--btn-stripes) 50%, 
-                transparent 50%, 
-                transparent 75%, 
-                var(--btn-stripes) 75%
-              )`,
-              backgroundSize: '15px 15px',
-              position: 'relative',
-              backgroundOrigin: 'padding-box',
-              borderRadius: 3,
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                inset: 0,
-                borderRadius: 3,
-                padding: '3px',
-                background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                pointerEvents: 'none',
-              },
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: '0 10px 30px var(--red)',
-                bgcolor: 'var(--btn-hover-bg)',
-              }
-            }}
-          >
-            {t('home_download_cv')}
-          </Button>
+          <Box sx={{
+            display: 'flex',
+            gap: 3,
+            flexWrap: 'wrap',
+            mt: 4,
+            mb: 15,
+            width: '100%'
+          }}>
+            <Button
+              href="/Anna Boiko_Resume data analyst.pdf"
+              download="Anna Boiko_Resume data analyst.pdf"
+              sx={{
+                px: { xs: 4, md: 5 },
+                py: { xs: 1.2, md: 1.8 },
+                fontSize: { xs: '1.1rem', md: '1.3rem' },
+                fontWeight: 600,
+                color: 'var(--btn-cv-text)',
+                bgcolor: 'var(--btn-cv-bg)',
+                border: '1px solid var(--btn-cv-border)',
+                textTransform: 'none',
+                borderRadius: '12px',
+                boxShadow: 'var(--btn-cv-shadow)',
+                transition: 'all 0.2s',
+                '&:hover': {
+                  bgcolor: 'var(--btn-cv-hover-bg)',
+                  boxShadow: 'var(--btn-cv-hover-shadow)',
+                  transform: 'translateY(-2px)'
+                }
+              }}
+            >
+              {t('home_download_cv')}
+            </Button>
+
+            <Button
+              onClick={() => router.push('/contact')}
+              sx={{
+                px: { xs: 4, md: 5 },
+                py: { xs: 1.2, md: 1.8 },
+                fontSize: { xs: '1.1rem', md: '1.3rem' },
+                fontWeight: 600,
+                color: 'var(--purple)',
+                bgcolor: 'var(--btn-touch-bg)',
+                border: '1px solid var(--purple)',
+                textTransform: 'none',
+                borderRadius: '12px',
+                transition: 'all 0.2s',
+                '&:hover': {
+                  bgcolor: 'var(--btn-touch-hover-bg)',
+                  transform: 'translateY(-2px)'
+                }
+              }}
+            >
+              {t('home_get_in_touch')}
+            </Button>
+          </Box>
         </Container>
       </Box>
 
