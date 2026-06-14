@@ -71,7 +71,41 @@ export default function Home() {
               {t('home_name_is')} <strong>{t('home_name_anna')}</strong><span style={{ color: 'var(--dot-color)' }}>.</span>
             </Typography>
 
-            <Typography variant="h3" sx={{ fontSize: '1.2rem', color: 'text', mb: 2, maxWidth: 600 }} dangerouslySetInnerHTML={{ __html: t('home_bio_mobile') }} />
+            <Typography variant="h3" sx={{ fontSize: '1.2rem', color: 'text', mb: 3, maxWidth: 600 }} dangerouslySetInnerHTML={{ __html: t('home_bio_mobile') }} />
+            <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', mb: 2 }}>
+              <Box sx={{
+                borderRadius: '50px',
+                px: 2,
+                py: 0.8,
+                fontSize: '0.85rem',
+                fontWeight: 400,
+                color: 'var(--text)',
+                border: '1px solid var(--text)',
+                opacity: 0.8,
+                display: 'inline-flex',
+                alignItems: 'center',
+                bgcolor: 'transparent',
+                lineHeight: 1
+              }}>
+                {t('home_status_fulltime')}
+              </Box>
+              <Box sx={{
+                borderRadius: '50px',
+                px: 2,
+                py: 0.8,
+                fontSize: '0.85rem',
+                fontWeight: 400,
+                color: 'var(--text)',
+                border: '1px solid var(--text)',
+                opacity: 0.8,
+                display: 'inline-flex',
+                alignItems: 'center',
+                bgcolor: 'transparent',
+                lineHeight: 1
+              }}>
+                {t('home_status_preference')}
+              </Box>
+            </Box>
           </Box>
 
           {/* === DESKTOP LAYOUT === */}
@@ -105,8 +139,42 @@ export default function Home() {
               </Box>
             </Box>
             {/* Bottom Row: Bio */}
-            <Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               <Typography variant="h3" sx={{ fontSize: '1.5rem', color: 'text', maxWidth: 800 }} dangerouslySetInnerHTML={{ __html: t('home_bio_desktop') }} />
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Box sx={{
+                  borderRadius: '50px',
+                  px: 2.5,
+                  py: 1,
+                  fontSize: '0.95rem',
+                  fontWeight: 400,
+                  color: 'var(--text)',
+                  border: '1px solid var(--text)',
+                  opacity: 0.8,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  bgcolor: 'transparent',
+                  lineHeight: 1
+                }}>
+                  {t('home_status_fulltime')}
+                </Box>
+                <Box sx={{
+                  borderRadius: '50px',
+                  px: 2.5,
+                  py: 1,
+                  fontSize: '0.95rem',
+                  fontWeight: 400,
+                  color: 'var(--text)',
+                  border: '1px solid var(--text)',
+                  opacity: 0.8,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  bgcolor: 'transparent',
+                  lineHeight: 1
+                }}>
+                  {t('home_status_preference')}
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Container>
