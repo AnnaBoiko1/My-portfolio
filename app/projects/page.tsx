@@ -207,62 +207,242 @@ const categories = [
   { id: 'data-analytics', translationKey: 'projects_filter_data_analytics' }
 ] as const;
 
-const localProject = {
-  id: 'd9b7a4cf-0a4e-4f01-8b9a-4c28f0d5718a',
-  slug: 'bank-churn-analysis',
-  position: 4,
-  figma_url: '',
-  github_url: 'https://github.com/AnnaBoiko1/bank-churn-analysis',
-  notebook_url: 'https://github.com/AnnaBoiko1/bank-churn-analysis/blob/main/Bank_Churn_Analysis.ipynb',
-  images: [
-    '/churn_1.png',
-    '/churn_2.png',
-    '/churn_3.png',
-    '/churn_5.png',
-    '/churn_6.png'
-  ],
-  name: {
-    EN: 'Bank Customer Churn Analysis',
-    UA: 'Аналіз відтоку клієнтів банку',
-    FR: "Analyse de l'attrition des clients bancaires",
-    DE: 'Analyse der Bankkundenabwanderung'
-  },
-  tagline: {
-    EN: 'From Raw Data to Predictive Insights',
-    UA: 'Від сирих даних до прогнозних інсайтів',
-    FR: 'Des données brutes aux insights prédictifs',
-    DE: 'Von Rohdaten zu prädiktiven Erkenntnissen'
-  },
-  description: {
-    EN: 'End-to-end data analytics project analyzing churn behavior across 10,000 bank customers. Cleaned real-world messy data, uncovered key churn drivers through interactive visualizations, and built a Random Forest model that identifies high-risk customers with 85.9% ROC-AUC accuracy.',
-    UA: 'Енд-ту-енд проєкт з аналітики даних, що аналізує поведінку відтоку 10 000 клієнтів банку. Очищено реальні «брудні» дані, виявлено ключові фактори відтоку за допомогою інтерактивних візуалізацій та побудовано модель Random Forest, яка ідентифікує клієнтів високого ризику з точністю 85.9% ROC-AUC.',
-    FR: "Projet d'analyse de données de bout en bout analysant le comportement d'attrition de 10 000 clients bancaires. Nettoyage de données réelles complexes, découverte des principaux facteurs d'attrition via des visualisations interactives et construction d'un modèle Random Forest identifiant les clients à haut risque avec une précision ROC-AUC de 85,9 %.",
-    DE: 'End-to-End-Datenanalyseprojekt zur Untersuchung des Abwanderungsverhaltens von 10.000 Bankkunden. Bereinigung realer, unstrukturierter Daten, Aufdeckung wichtiger Abwanderungstreiber durch interaktive Visualisierungen und Erstellung eines Random-Forest-Modells, das Hochrisikokunden mit einer Genauigkeit von 85,9 % ROC-AUC identifiziert.'
-  },
-  highlights: {
-    EN: [
-      'Germany churns at <strong>32.4%</strong> — nearly <strong>2×</strong> France and Spain',
-      'Customers aged <strong>51–60</strong> show <strong>56%</strong> churn rate',
-      '<strong>1,823</strong> high-risk customers identified by ML model (actual churn <strong>71.7%</strong>)'
+const localProjects = [
+  {
+    id: 'd9b7a4cf-0a4e-4f01-8b9a-4c28f0d5718a',
+    slug: 'bank-churn-analysis',
+    position: 4,
+    figma_url: '',
+    github_url: 'https://github.com/AnnaBoiko1/bank-churn-analysis',
+    notebook_url: 'https://github.com/AnnaBoiko1/bank-churn-analysis/blob/main/Bank_Churn_Analysis.ipynb',
+    images: [
+      '/churn_1.png',
+      '/churn_2.png',
+      '/churn_3.png',
+      '/churn_5.png',
+      '/churn_6.png'
     ],
-    UA: [
-      'Німеччина має відтік <strong>32.4%</strong> — майже вдвічі більше за Францію та Іспанію',
-      'Клієнти віком <strong>51–60 років</strong> демонструють рівень відтоку <strong>56%</strong>',
-      '<strong>1 823</strong> клієнти високого ризику ідентифіковані моделлю машинного навчання (фактичний відтік <strong>71.7%</strong>)'
-    ],
-    FR: [
-      "L'Allemagne enregistre une attrition de <strong>32,4 %</strong> — soit près de <strong>2×</strong> la France et l'Espagne",
-      "Les clients âgés de <strong>51 à 60 ans</strong> affichent un taux d'attrition de <strong>56 %</strong>",
-      "<strong>1 823</strong> clients à haut risque identifiés par le modèle ML (attrition réelle de <strong>71,7 %</strong>)"
-    ],
-    DE: [
-      'Deutschland verzeichnet eine Abwanderungsquote von <strong>32,4 %</strong> — fast das <strong>Doppelte</strong> von Frankreich und Spanien',
-      'Kunden im Alter von <strong>51–60 Jahren</strong> weisen eine Abwanderungsquote von <strong>56 %</strong> auf',
-      '<strong>1.823</strong> Hochrisikokunden wurden durch das ML-Modell identifiziert (tatsächliche Abwanderung <strong>71,7 %</strong>)'
-    ]
+    name: {
+      EN: 'Bank Customer Churn Analysis',
+      UA: 'Аналіз відтоку клієнтів банку',
+      FR: "Analyse de l'attrition des clients bancaires",
+      DE: 'Analyse der Bankkundenabwanderung'
+    },
+    tagline: {
+      EN: 'From Raw Data to Predictive Insights',
+      UA: 'Від сирих даних до прогнозних інсайтів',
+      FR: 'Des données brutes aux insights prédictifs',
+      DE: 'Von Rohdaten zu prädiktiven Erkenntnissen'
+    },
+    description: {
+      EN: 'End-to-end data analytics project analyzing churn behavior across 10,000 bank customers. Cleaned real-world messy data, uncovered key churn drivers through interactive visualizations, and built a Random Forest model that identifies high-risk customers with 85.9% ROC-AUC accuracy.',
+      UA: 'Енд-ту-енд проєкт з аналітики даних, що аналізує поведінку відтоку 10 000 клієнтів банку. Очищено реальні «брудні» дані, виявлено ключові фактори відтоку за допомогою інтерактивних візуалізацій та побудовано модель Random Forest, яка ідентифікує клієнтів високого ризику з точністю 85.9% ROC-AUC.',
+      FR: "Projet d'analyse de données de bout en bout analysant le comportement d'attrition de 10 000 clients bancaires. Nettoyage de données réelles complexes, découverte des principaux facteurs d'attrition via des visualisations interactives et construction d'un modèle Random Forest identifiant les clients à haut risque avec une précision ROC-AUC de 85,9 %.",
+      DE: 'End-to-End-Datenanalyseprojekt zur Untersuchung des Abwanderungsverhaltens von 10.000 Bankkunden. Bereinigung realer, unstrukturierter Daten, Aufdeckung wichtiger Abwanderungstreiber durch interaktive Visualisierungen und Erstellung eines Random-Forest-Modells, das Hochrisikokunden mit einer Genauigkeit von 85,9 % ROC-AUC identifiziert.'
+    },
+    highlights: {
+      EN: [
+        'Germany churns at <strong>32.4%</strong> — nearly <strong>2×</strong> France and Spain',
+        'Customers aged <strong>51–60</strong> show <strong>56%</strong> churn rate',
+        '<strong>1,823</strong> high-risk customers identified by ML model (actual churn <strong>71.7%</strong>)'
+      ],
+      UA: [
+        'Німеччина має відтік <strong>32.4%</strong> — майже вдвічі більше за Францію та Іспанію',
+        'Клієнти віком <strong>51–60 років</strong> демонструють рівень відтоку <strong>56%</strong>',
+        '<strong>1 823</strong> клієнти високого ризику ідентифіковані моделлю машинного навчання (фактичний відтік <strong>71.7%</strong>)'
+      ],
+      FR: [
+        "L'Allemagne enregistre une attrition de <strong>32,4 %</strong> — soit près de <strong>2×</strong> la France et l'Espagne",
+        "Les clients âgés de <strong>51 à 60 ans</strong> affichent un taux d'attrition de <strong>56 %</strong>",
+        "<strong>1 823</strong> clients à haut risque identifiés par le modèle ML (attrition réelle de <strong>71,7 %</strong>)"
+      ],
+      DE: [
+        'Deutschland verzeichnet eine Abwanderungsquote von <strong>32,4 %</strong> — fast das <strong>Doppelte</strong> von Frankreich und Spanien',
+        'Kunden im Alter von <strong>51–60 Jahren</strong> weisen eine Abwanderungsquote von <strong>56 %</strong> auf',
+        '<strong>1.823</strong> Hochrisikokunden wurden durch das ML-Modell identifiziert (tatsächliche Abwanderung <strong>71,7 %</strong>)'
+      ]
+    },
+    tags: ['Python', 'Pandas', 'Plotly', 'Dash', 'Scikit-learn']
   },
-  tags: ['Python', 'Pandas', 'Plotly', 'Dash', 'Scikit-learn']
-};
+  {
+    id: 'd9b7a4cf-0a4e-4f01-8b9a-4c28f0d5718b',
+    slug: 'ping-it',
+    position: 1,
+    figma_url: 'https://www.figma.com/design/IdMHUj0lHkEr4KxSYTvVUS/LW--1282-Ping-it?m=auto&t=8Xh21YRJKjjIhOG1-6',
+    github_url: 'https://github.com/S00J1NK1M/ping_it',
+    images: [
+      '/ping_it_1.png',
+      '/ping_it_2.png',
+      '/ping_it_3.png',
+      '/ping_it_4.png',
+      '/ping_it_5.png',
+      '/ping_it_6.png'
+    ],
+    name: {
+      DE: 'Ping It',
+      EN: 'Ping It',
+      FR: 'Ping It',
+      UA: 'Пінг Іт'
+    },
+    tagline: {
+      EN: 'Table Tennis Court Reservation Platform',
+      UA: 'Платформа для бронювання настільного тенісу',
+      FR: 'Plateforme de réservation de tennis de table',
+      DE: 'Tischtennis-Reservierungsplattform'
+    },
+    description: {
+      DE: 'Eine responsive Web-App für Tischtennis-Enthusiasten, um nahe Tischtennisplätze zu entdecken, zu buchen, Reservierungen zu verwalten und sich mit lokalen Spielern in Echtzeit zu verbinden. Mit React und Ruby on Rails gebaut, integriert APIs für Live-Karten-Updates und nahtlose Match-Koordination.',
+      EN: 'A responsive web app for table tennis enthusiasts to discover and book nearby tables, manage reservations, and connect with local players in real time. Built with React and Ruby on Rails, it integrates APIs for live map updates and seamless match coordination.',
+      FR: "Une application web responsive pour les passionnés de tennis de table afin de découvrir et réserver des tables à proximité, gérer les réservations et se connecter avec des joueurs locaux en temps réel. Construite avec React et Ruby on Rails, elle intègre des APIs pour des mises à jour de carte en direct et une coordination de match fluide.",
+      UA: 'Адаптивний веб-додаток для любителів настільного тенісу, щоб знаходити та бронювати столики поруч, керувати бронюваннями та спілкуватися з локальними гравцями в реальному часі. Створено з React та Ruby on Rails, інтегровано API для живих карт та координації матчів.'
+    },
+    highlights: {
+      EN: [
+        'Contributed <strong>user authentication</strong> (JWT), live map integration with Google Maps API',
+        'Led <strong>mobile-first UI/UX redesign</strong> — improved usability across all breakpoints',
+        'Delivered a <strong>real-time booking system</strong> with conflict detection and confirmation flow'
+      ],
+      UA: [
+        'Реалізувала <strong>автентифікацію користувачів</strong> (JWT) та інтеграцію карти Google Maps API',
+        'Очолила <strong>мобільний редизайн UI/UX</strong> — покращила зручність на всіх пристроях',
+        'Додала <strong>систему бронювання в реальному часі</strong> з виявленням конфліктів та підтвердженням'
+      ],
+      FR: [
+        "Contribution à l'<strong>authentification utilisateur</strong> (JWT), intégration de carte en direct avec l'API Google Maps",
+        "Direction de la <strong>refonte UI/UX mobile-first</strong> — amélioration de l'ergonomie sur tous les écrans",
+        "Livraison d'un <strong>système de réservation en temps réel</strong> avec détection des conflits"
+      ],
+      DE: [
+        'Beitrag zur <strong>Benutzerauthentifizierung</strong> (JWT), Live-Kartenintegration mit Google Maps API',
+        'Leitung des <strong>Mobile-First-UI/UX-Redesigns</strong> — verbesserte Benutzerfreundlichkeit über alle Breakpoints',
+        'Bereitstellung eines <strong>Echtzeit-Buchungssystems</strong> mit Konflikterkennung und Bestätigungsablauf'
+      ]
+    },
+    tags: ['React', 'Ruby on Rails', 'PostgreSQL', 'Google Maps API', 'Figma'],
+    project_type: {
+      EN: 'Team project • 4 devs',
+      UA: 'Командний проєкт • 4 розробники',
+      FR: "Projet d'équipe • 4 dévs",
+      DE: 'Teamprojekt • 4 Entwickler'
+    }
+  },
+  {
+    id: '20ad13ed-b9fc-444c-a387-d7f00a42edc4',
+    slug: 'lingoda',
+    position: 2,
+    figma_url: 'https://www.figma.com/design/LoJSPqtZcWbeKD6hcOdo0x/Lingoda-Copycat?m=auto&t=8Xh21YRJKjjIhOG1-6',
+    github_url: 'https://github.com/S00J1NK1M/lingoda_copycat',
+    images: [
+      '/lingoda_1.png',
+      '/lingoda_2.png',
+      '/lingoda_3.png'
+    ],
+    name: {
+      DE: 'Lingoda Kopie',
+      EN: 'Lingoda Copycat',
+      FR: 'Copie Lingoda',
+      UA: 'Копікат Лінгода'
+    },
+    tagline: {
+      EN: 'Language Course Booking Platform',
+      UA: 'Платформа для бронювання мовних курсів',
+      FR: 'Plateforme de réservation de cours de langue',
+      DE: 'Sprachkurs-Buchungsplattform'
+    },
+    description: {
+      DE: 'Benutzerfreundliche Web-Plattform zum Entdecken und Buchen von Sprachkursen. Lernende filtern, ansehen und buchen in wenigen Klicks, während sie Buchungen mühelos verwalten. Mit Ruby on Rails, JavaScript (ES6) und SCSS gebaut, mit responsivem UI.',
+      EN: 'A language course booking platform inspired by Lingoda — users can browse, filter, and reserve lessons, and manage their schedule. Focused on clean UX and reliable data management. Built with Ruby on Rails, JavaScript (ES6), and SCSS, with a responsive UI.',
+      FR: "Plateforme web conviviale pour découvrir et réserver des cours de langues facilement. Les apprenants filtrent, voient et réservent en quelques clics tout en gérant leurs réservations. Construite avec Ruby on Rails, JavaScript (ES6) et SCSS, avec UI responsive.",
+      UA: 'Зручна веб-платформа для пошуку та бронювання мовних курсів. Учні фільтрують, переглядають та резервують уроки кількома кліками, керуючи бронюваннями. Створено з Ruby on Rails, JavaScript (ES6) та SCSS, з адаптивним UI.'
+    },
+    highlights: {
+      EN: [
+        'Implemented <strong>secure authentication</strong> with Devise — login, signup, session management',
+        'Built <strong>booking & cancellation flow</strong> with PostgreSQL relational data model',
+        'Integrated <strong>Cloudinary</strong> for scalable image storage and upload'
+      ],
+      UA: [
+        'Реалізував <strong>безпечну автентифікацію</strong> з Devise — вхід, реєстрація, управління сесіями',
+        'Створив <strong>процес бронювання та скасування</strong> за допомогою реляційної моделі PostgreSQL',
+        'Інтегрував <strong>Cloudinary</strong> для масштабованого зберігання та завантаження зображень'
+      ],
+      FR: [
+        "Implémentation d'une <strong>authentification sécurisée</strong> avec Devise — connexion, inscription, sessions",
+        "Création du <strong>flux de réservation & annulation</strong> avec le modèle de données PostgreSQL",
+        "Intégration de <strong>Cloudinary</strong> pour le stockage et le téléchargement d'images évolutifs"
+      ],
+      DE: [
+        'Implementierung der <strong>sicheren Authentifizierung</strong> mit Devise — Login, Registrierung, Sitzungsverwaltung',
+        'Erstellung des <strong>Buchungs- und Stornierungsablaufs</strong> mit relationalem PostgreSQL-Datenmodell',
+        'Integration von <strong>Cloudinary</strong> für skalierbare Bildspeicherung und -upload'
+      ]
+    },
+    tags: ['Ruby on Rails', 'JavaScript ES6', 'PostgreSQL', 'Devise', 'Cloudinary'],
+    project_type: {
+      EN: 'Team project • 3 devs',
+      UA: 'Командний проєкт • 3 розробники',
+      FR: "Projet d'équipe • 3 dévs",
+      DE: 'Teamprojekt • 3 Entwickler'
+    }
+  },
+  {
+    id: 'a928b108-0964-431c-b21d-fc828d9b8c66',
+    slug: 'watch-list',
+    position: 3,
+    figma_url: '#',
+    github_url: 'https://github.com/AnnaBoiko1/rails-watch-list',
+    images: [
+      '/watch_list.png'
+    ],
+    name: {
+      DE: 'Watch List',
+      EN: 'Watch List',
+      FR: 'Liste de Visionnage',
+      UA: 'Список для перегляду'
+    },
+    tagline: {
+      EN: 'Personal Movie Collection Curator',
+      UA: 'Персональний куратор колекції фільмів',
+      FR: 'Conservateur personnel de collections de films',
+      DE: 'Persönlicher Kurator für Filmsammlungen'
+    },
+    description: {
+      DE: 'Eine persönliche Filmverwaltungs-App, mit der Benutzer benutzerdefinierte Merklisten erstellen, Filme aus einer externen API hinzufügen und Sammlungen nach Genre organisieren können. Solo als Rails-CRUD-Anwendung erstellt.',
+      EN: 'A personal movie management app where users create custom watchlists, add films from an external API, and organize collections by genre. Built solo as a Rails CRUD application.',
+      FR: 'Une application personnelle de gestion de films où les utilisateurs créent des listes de visionnage personnalisées, ajoutent des films depuis une API externe et organisent les collections par genre. Conçu en solo comme application Rails CRUD.',
+      UA: 'Персональний додаток для управління фільмами, де користувачі створюють власні списки перегляду, додають фільми з зовнішнього API та організовують колекції за жанрами. Створено соло як Rails CRUD додаток.'
+    },
+    highlights: {
+      EN: [
+        'Built full <strong>CRUD functionality</strong> — create, read, update, delete lists and movies',
+        'Integrated <strong>external movie API</strong> for search and data population',
+        '<strong>Secure auth</strong> with Devise, responsive design with custom SCSS'
+      ],
+      UA: [
+        'Створив повний <strong>функціонал CRUD</strong> — створення, читання, оновлення, видалення списків та фільмів',
+        'Інтегрував <strong>зовнішній API фільмів</strong> для пошуку та наповнення даних',
+        '<strong>Безпечна автентифікація</strong> з Devise, адаптивний дизайн з кастомним SCSS'
+      ],
+      FR: [
+        'Création de la <strong>fonctionnalité CRUD</strong> complète — créer, lire, mettre à jour, supprimer des listes et des films',
+        "Intégration d'une <strong>API externe de films</strong> pour la recherche et le peuplement des données",
+        '<strong>Auth sécurisée</strong> avec Devise, design responsive avec SCSS personnalisé'
+      ],
+      DE: [
+        'Erstellung der vollständigen <strong>CRUD-Funktionalität</strong> — Erstellen, Lesen, Aktualisieren, Löschen von Listen und Filmen',
+        'Integration einer <strong>externen Film-API</strong> zur Suche und Datenbefüllung',
+        '<strong>Sichere Authentifizierung</strong> mit Devise, responsive Gestaltung mit benutzerdefiniertem SCSS'
+      ]
+    },
+    tags: ['Ruby on Rails', 'JavaScript ES6', 'PostgreSQL', 'SCSS', 'Devise'],
+    project_type: {
+      EN: 'Solo project',
+      UA: 'Соло проєкт',
+      FR: 'Projet solo',
+      DE: 'Solo-Projekt'
+    }
+  }
+];
 
 export default function ProjectsPage() {
   const pathname = usePathname();
@@ -270,7 +450,7 @@ export default function ProjectsPage() {
   const containerRef = useScrollNavigation('/contact', '/about');
   const { t, language } = useLanguage();
 
-  const [projects, setProjects] = React.useState<any[]>([]);
+  const [projects, setProjects] = React.useState<any[]>(localProjects);
   const [activeCategory, setActiveCategory] = React.useState<'all' | 'development' | 'data-analytics'>('data-analytics');
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const [activeHoverImage, setActiveHoverImage] = React.useState<string | null>(null);
@@ -291,39 +471,215 @@ export default function ProjectsPage() {
   }, [activeCategory]);
 
   React.useEffect(() => {
-    async function fetchProjects() {
-      // @ts-ignore
-      const { supabaseClient } = await import('@/lib/supabaseClient');
-      const { data, error } = await supabaseClient
-        .from('projects')
-        .select('*')
-        .order('position', { ascending: true });
-      if (data) {
-        // Overlay the local Bank Churn project if not already present
-        const hasProject = data.some((p: any) => p.slug === 'bank-churn-analysis');
-        if (!hasProject) {
-          setProjects([...data, localProject]);
-        } else {
-          setProjects(data);
-        }
-      } else {
-        // Fallback to local project if Supabase fails
-        setProjects([localProject]);
-      }
-    }
-    fetchProjects();
+    setProjects(localProjects);
   }, []);
 
-  const filteredProjects = projects.filter((project) => {
-    if (activeCategory === 'all') return true;
-    if (activeCategory === 'development') {
-      return project.slug !== 'bank-churn-analysis';
+  const filteredProjects = React.useMemo(() => {
+    const list = projects.filter((project) => {
+      if (activeCategory === 'all') return true;
+      if (activeCategory === 'development') {
+        return project.slug !== 'bank-churn-analysis';
+      }
+      if (activeCategory === 'data-analytics') {
+        return project.slug === 'bank-churn-analysis';
+      }
+      return true;
+    });
+
+    if (activeCategory === 'all') {
+      return [...list].sort((a, b) => {
+        if (a.slug === 'bank-churn-analysis') return -1;
+        if (b.slug === 'bank-churn-analysis') return 1;
+        return (a.position || 0) - (b.position || 0);
+      });
     }
-    if (activeCategory === 'data-analytics') {
-      return project.slug === 'bank-churn-analysis';
-    }
-    return true;
-  });
+    return list;
+  }, [projects, activeCategory]);
+
+  const renderProjectDetailsTop = (project: any) => {
+    return (
+      <Box>
+        {/* Organization/Category and Project Type badges */}
+        <Box sx={{ display: 'flex', gap: 1.5, mb: 1.5, flexWrap: 'wrap' }}>
+          <Box sx={{
+            borderRadius: '50px',
+            px: 2,
+            py: 0.5,
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            letterSpacing: '0.5px',
+            bgcolor: 'rgba(167, 73, 214, 0.12)',
+            color: 'var(--purple)',
+            border: '1.5px solid var(--purple)',
+            textTransform: 'uppercase'
+          }}>
+            {t('projects_filter_development')}
+          </Box>
+          {project.project_type && (
+            <Box sx={{
+              borderRadius: '50px',
+              px: 2,
+              py: 0.5,
+              fontSize: '0.75rem',
+              fontWeight: 700,
+              letterSpacing: '0.5px',
+              bgcolor: 'rgba(255, 255, 255, 0.05)',
+              color: 'var(--text)',
+              border: '1.5px solid var(--copy-email-hover)',
+              textTransform: 'uppercase',
+              opacity: 0.8
+            }}>
+              {project.project_type?.[language] || project.project_type?.EN || ""}
+            </Box>
+          )}
+        </Box>
+
+        <Typography variant='h4' sx={{ fontWeight: 800, color: 'var(--text)', lineHeight: 1.15 }}>
+          <strong>{project.name?.[language] || project.name?.EN || ""}</strong>
+        </Typography>
+
+        <Typography variant='h5' sx={{ color: 'var(--purple)', fontWeight: 600, mt: 1, mb: 2, fontSize: '1.25rem', fontStyle: 'italic' }}>
+          {project.tagline?.[language] || project.tagline?.EN || ""}
+        </Typography>
+
+        <Typography variant='body1' sx={{ mt: 1, mb: 3, fontSize: { xs: '0.95rem', md: '1.05rem' }, color: 'var(--text)', opacity: 0.9, lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
+
+        {/* Highlights */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 3 }}>
+          {(project.highlights?.[language] || project.highlights?.EN || []).map((highlight: string, i: number) => (
+            <Box key={i} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5 }}>
+              <Box sx={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                bgcolor: 'var(--purple)',
+                mt: '8px',
+                flexShrink: 0,
+                boxShadow: '0 0 6px var(--purple)'
+              }} />
+              <Typography
+                variant='body2'
+                sx={{ fontSize: { xs: '0.9rem', md: '0.95rem' }, color: 'var(--text)', lineHeight: 1.5 }}
+                dangerouslySetInnerHTML={{ __html: highlight }}
+              />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    );
+  };
+
+  const renderProjectDetailsBottom = (project: any) => {
+    const hasFigma = Boolean(project.figma_url && project.figma_url.trim() !== '' && project.figma_url !== '#');
+    const hasGithub = Boolean(project.github_url && project.github_url.trim() !== '' && project.github_url !== '#');
+
+    return (
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, gap: 3, borderTop: '1px solid var(--copy-email-hover)', pt: 2, mt: 2, width: '100%' }}>
+        {/* Tech Tags */}
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+          {project.tags?.map((tag: string, i: number) => (
+            <Box key={i} sx={{
+              borderRadius: '4px',
+              px: 1.2,
+              py: 0.4,
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              bgcolor: 'rgba(0,0,0,0.03)',
+              color: 'var(--text)',
+              border: '1px solid var(--copy-email-hover)',
+              transition: 'all 0.2s',
+              '&:hover': {
+                bgcolor: 'var(--copy-email-hover)',
+              }
+            }}>
+              {tag}
+            </Box>
+          ))}
+        </Box>
+
+        {/* Action Buttons */}
+        <Box sx={{ display: 'flex', gap: 1.5, width: { xs: '100%', sm: 'auto' } }}>
+          {hasFigma && (
+            <Button
+              onClick={() => window.open(project.figma_url, '_blank', 'noopener,noreferrer')}
+              sx={{
+                borderRadius: '8px',
+                px: 2,
+                py: 0.8,
+                textTransform: 'none',
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                border: '1.5px solid var(--purple)',
+                color: 'var(--purple)',
+                bgcolor: 'transparent',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 1.2,
+                flex: { xs: 1, sm: 'initial' },
+                transition: 'all 0.2s',
+                '&:hover': {
+                  bgcolor: 'var(--copy-email-hover)',
+                  transform: 'translateY(-1px)'
+                }
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 28.5C19 25.8478 20.0536 23.3043 21.9289 21.4289C23.8043 19.5536 26.3478 18.5 29 18.5C31.6522 18.5 34.1957 19.5536 36.0711 21.4289C37.9464 23.3043 39 25.8478 39 28.5C39 31.1522 37.9464 33.6957 36.0711 35.5711C34.1957 37.4464 31.6522 38.5 29 38.5C26.3478 38.5 23.8043 37.4464 21.9289 35.5711C20.0536 33.6957 19 31.1522 19 28.5Z" fill="#1ABCFE" />
+                <path d="M0 47.5C0 44.8478 1.05357 42.3043 2.92893 40.4289C4.8043 38.5536 7.34784 37.5 10 37.5C12.6522 37.5 15.1957 38.5536 17.0711 40.4289C18.9464 42.3043 20 44.8478 20 47.5C20 50.1522 18.9464 52.6957 17.0711 54.5711C15.1957 56.4464 12.6522 57.5 10 57.5C7.34784 57.5 4.8043 56.4464 2.92893 54.5711C1.05357 52.6957 0 50.1522 0 47.5Z" fill="#0ACF83" />
+                <path d="M0 28.5C0 25.8478 1.05357 23.3043 2.92893 21.4289C4.8043 19.5536 7.34784 18.5 10 18.5H20V38.5H10C7.34784 38.5 4.8043 37.4464 2.92893 35.5711C1.05357 33.6957 0 31.1522 0 28.5Z" fill="#A259FF" />
+                <path d="M0 9.5C0 6.84784 1.05357 4.3043 2.92893 2.42893C4.8043 0.553571 7.34784 -4.76837e-07 10 0H20V19H10C7.34784 19 4.8043 18.4464 2.92893 16.5711C1.05357 14.6957 0 12.1522 0 9.5Z" fill="#F24E1E" />
+                <path d="M20 0H30C32.6522 -4.76837e-07 35.1957 0.553571 37.0711 2.42893C38.9464 4.3043 40 6.84784 40 9.5C40 12.1522 38.9464 14.6957 37.0711 16.5711C35.1957 18.4464 32.6522 19 30 19H20V0Z" fill="#FF7262" />
+              </svg>
+              Figma
+            </Button>
+          )}
+
+          {hasGithub && (
+            <Button
+              onClick={() => window.open(project.github_url, '_blank', 'noopener,noreferrer')}
+              sx={{
+                borderRadius: '8px',
+                px: 2,
+                py: 0.8,
+                textTransform: 'none',
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                bgcolor: 'var(--purple)',
+                color: '#ffffff',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 1.2,
+                flex: { xs: 1, sm: 'initial' },
+                boxShadow: '0 4px 12px rgba(167, 73, 214, 0.3)',
+                transition: 'all 0.2s',
+                '&:hover': {
+                  bgcolor: 'var(--btn-hover-bg)',
+                  boxShadow: '0 6px 16px rgba(167, 73, 214, 0.4)',
+                  transform: 'translateY(-1px)'
+                }
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+              </svg>
+              GitHub
+            </Button>
+          )}
+        </Box>
+      </Box>
+    );
+  };
+
+  const renderProjectDetails = (project: any, hideTextOnMobile = false) => {
+    return (
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minWidth: 0, position: 'relative', width: '100%' }}>
+        <Box sx={{ display: hideTextOnMobile ? { xs: 'none', md: 'block' } : 'block' }}>
+          {renderProjectDetailsTop(project)}
+        </Box>
+        {renderProjectDetailsBottom(project)}
+      </Box>
+    );
+  };
 
   const renderHeader = () => {
     return (
@@ -579,20 +935,7 @@ export default function ProjectsPage() {
           </Box>
 
           {/* Content Text (Right on Desktop) */}
-          <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant='h4' sx={{ display: { xs: 'none', md: 'block' } }}>
-              <strong>{project.name?.[language] || project.name?.EN || ""}</strong>
-            </Typography>
-            <Typography variant='h5' sx={{ display: { xs: 'none', md: 'block' }, mt: 2, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
-            {/* Feedback Stars Section */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 1, md: 3 }, mb: 1 }}>
-              <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                {t('projects_feedback')}
-              </Typography>
-              <StarRating projectId={project.id} />
-            </Box>
-            <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
-          </Box>
+          {renderProjectDetails(project, true)}
         </Box >
       </Container>
     );
@@ -607,22 +950,11 @@ export default function ProjectsPage() {
 
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: isFirstSlide ? 1 : 12 }}>
           <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
-            <Box sx={{ order: { xs: 1, md: 1 }, width: '100%', mb: { xs: -3, md: 0 } }}>
-              <Typography variant='h4' sx={{ mt: { xs: 3, md: 5 } }}>
-                <strong>{project.name?.[language] || project.name?.EN || ""}</strong>
-              </Typography>
-              <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
+            <Box sx={{ order: { xs: 1, md: 1 }, width: '100%' }}>
+              {renderProjectDetailsTop(project)}
             </Box>
-
-            <Box sx={{ order: { xs: 3, md: 2 }, display: 'flex', alignItems: 'center', gap: 2, mt: { xs: -8, md: 3 }, mb: 1, width: '100%', position: 'relative', zIndex: 10 }}>
-              <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                {t('projects_feedback')}
-              </Typography>
-              <StarRating projectId={project.id} />
-            </Box>
-
-            <Box sx={{ order: { xs: 4, md: 3 }, width: '100%', mb: { xs: 3, md: 0 } }}>
-              <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+            <Box sx={{ order: { xs: 3, md: 3 }, width: '100%' }}>
+              {renderProjectDetailsBottom(project)}
             </Box>
           </Box>
 
@@ -663,20 +995,11 @@ export default function ProjectsPage() {
             </Box>
           </Box>
           <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
-            <Box sx={{ order: { xs: 1, md: 2 }, width: '100%', mb: { xs: 2, md: 0 } }}>
-              <Typography variant='h4' sx={{ mt: { xs: 3, md: 0 } }}>
-                <strong>{project.name?.[language] || project.name?.EN || ""}</strong>
-              </Typography>
-              <Typography variant='h5' sx={{ mt: { xs: 1, md: 2 }, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: project.description?.[language] || project.description?.EN || "" }} />
+            <Box sx={{ order: { xs: 1, md: 2 }, width: '100%' }}>
+              {renderProjectDetailsTop(project)}
             </Box>
-            <Box sx={{ order: { xs: 3, md: 3 }, display: 'flex', alignItems: 'center', gap: 2, mt: { xs: 2, md: 3 }, mb: 1, width: '100%', position: 'relative', zIndex: 10 }}>
-              <Typography variant="h5" sx={{ fontWeight: 500, color: 'var(--text)', fontSize: { xs: '1rem', md: '1.5rem' } }}>
-                {t('projects_feedback')}
-              </Typography>
-              <StarRating projectId={project.id} />
-            </Box>
-            <Box sx={{ order: { xs: 4, md: 4 }, width: '100%', mb: { xs: 3, md: 0 } }}>
-              <ProjectLinksDropdown figmaUrl={project.figma_url} githubUrl={project.github_url} />
+            <Box sx={{ order: { xs: 3, md: 4 }, width: '100%' }}>
+              {renderProjectDetailsBottom(project)}
             </Box>
           </Box>
         </Box>

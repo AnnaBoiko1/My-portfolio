@@ -8,6 +8,6 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function check() {
   const { data: projects, error: pErr } = await supabase.from('projects').select('*').limit(3);
-  console.log("Projects:", projects, pErr);
+  console.log(JSON.stringify(projects, null, 2));
 }
 check();
