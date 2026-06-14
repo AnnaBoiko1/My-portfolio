@@ -451,7 +451,7 @@ export default function ProjectsPage() {
   const { t, language } = useLanguage();
 
   const [projects, setProjects] = React.useState<any[]>(localProjects);
-  const [activeCategory, setActiveCategory] = React.useState<'all' | 'development' | 'data-analytics'>('data-analytics');
+  const [activeCategory, setActiveCategory] = React.useState<'all' | 'development' | 'data-analytics'>('all');
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const [activeHoverImage, setActiveHoverImage] = React.useState<string | null>(null);
   const galleryScrollRef = React.useRef<HTMLDivElement>(null);
