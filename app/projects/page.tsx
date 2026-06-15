@@ -242,22 +242,22 @@ const localProjects = [
     },
     highlights: {
       EN: [
-        'Germany churns at <strong>32.4%</strong> — nearly <strong>2×</strong> France and Spain',
+        'Germany churns at <strong>32.4%</strong>, nearly <strong>2×</strong> France and Spain',
         'Customers aged <strong>51–60</strong> show <strong>56%</strong> churn rate',
         '<strong>1,823</strong> high-risk customers identified by ML model (actual churn <strong>71.7%</strong>)'
       ],
       UA: [
-        'Німеччина має відтік <strong>32.4%</strong> — майже вдвічі більше за Францію та Іспанію',
+        'Німеччина має відтік <strong>32.4%</strong>, майже вдвічі більше за Францію та Іспанію',
         'Клієнти віком <strong>51–60 років</strong> демонструють рівень відтоку <strong>56%</strong>',
         '<strong>1 823</strong> клієнти високого ризику ідентифіковані моделлю машинного навчання (фактичний відтік <strong>71.7%</strong>)'
       ],
       FR: [
-        "L'Allemagne enregistre une attrition de <strong>32,4 %</strong> — soit près de <strong>2×</strong> la France et l'Espagne",
+        "L'Allemagne enregistre une attrition de <strong>32,4 %</strong>, soit près de <strong>2×</strong> la France et l'Espagne",
         "Les clients âgés de <strong>51 à 60 ans</strong> affichent un taux d'attrition de <strong>56 %</strong>",
         "<strong>1 823</strong> clients à haut risque identifiés par le modèle ML (attrition réelle de <strong>71,7 %</strong>)"
       ],
       DE: [
-        'Deutschland verzeichnet eine Abwanderungsquote von <strong>32,4 %</strong> — fast das <strong>Doppelte</strong> von Frankreich und Spanien',
+        'Deutschland verzeichnet eine Abwanderungsquote von <strong>32,4 %</strong>, fast das <strong>Doppelte</strong> von Frankreich und Spanien',
         'Kunden im Alter von <strong>51–60 Jahren</strong> weisen eine Abwanderungsquote von <strong>56 %</strong> auf',
         '<strong>1.823</strong> Hochrisikokunden wurden durch das ML-Modell identifiziert (tatsächliche Abwanderung <strong>71,7 %</strong>)'
       ]
@@ -299,22 +299,22 @@ const localProjects = [
     highlights: {
       EN: [
         'Contributed <strong>user authentication</strong> (JWT), live map integration with Google Maps API',
-        'Led <strong>mobile-first UI/UX redesign</strong> — improved usability across all breakpoints',
+        'Led <strong>mobile-first UI/UX redesign</strong>, improved usability across all breakpoints',
         'Delivered a <strong>real-time booking system</strong> with conflict detection and confirmation flow'
       ],
       UA: [
         'Реалізувала <strong>автентифікацію користувачів</strong> (JWT) та інтеграцію карти Google Maps API',
-        'Очолила <strong>мобільний редизайн UI/UX</strong> — покращила зручність на всіх пристроях',
+        'Очолила <strong>мобільний редизайн UI/UX</strong>, покращила зручність на всіх пристроях',
         'Додала <strong>систему бронювання в реальному часі</strong> з виявленням конфліктів та підтвердженням'
       ],
       FR: [
         "Contribution à l'<strong>authentification utilisateur</strong> (JWT), intégration de carte en direct avec l'API Google Maps",
-        "Direction de la <strong>refonte UI/UX mobile-first</strong> — amélioration de l'ergonomie sur tous les écrans",
+        "Direction de la <strong>refonte UI/UX mobile-first</strong>, amélioration de l'ergonomie sur tous les écrans",
         "Livraison d'un <strong>système de réservation en temps réel</strong> avec détection des conflits"
       ],
       DE: [
         'Beitrag zur <strong>Benutzerauthentifizierung</strong> (JWT), Live-Kartenintegration mit Google Maps API',
-        'Leitung des <strong>Mobile-First-UI/UX-Redesigns</strong> — verbesserte Benutzerfreundlichkeit über alle Breakpoints',
+        'Leitung des <strong>Mobile-First-UI/UX-Redesigns</strong>, verbesserte Benutzerfreundlichkeit über alle Breakpoints',
         'Bereitstellung eines <strong>Echtzeit-Buchungssystems</strong> mit Konflikterkennung und Bestätigungsablauf'
       ]
     },
@@ -351,28 +351,28 @@ const localProjects = [
     },
     description: {
       DE: 'Benutzerfreundliche Web-Plattform zum Entdecken und Buchen von Sprachkursen. Lernende filtern, ansehen und buchen in wenigen Klicks, während sie Buchungen mühelos verwalten. Mit Ruby on Rails, JavaScript (ES6) und SCSS gebaut, mit responsivem UI.',
-      EN: 'A language course booking platform inspired by Lingoda — users can browse, filter, and reserve lessons, and manage their schedule. Focused on clean UX and reliable data management. Built with Ruby on Rails, JavaScript (ES6), and SCSS, with a responsive UI.',
+      EN: 'A language course booking platform inspired by Lingoda, users can browse, filter, and reserve lessons, and manage their schedule. Focused on clean UX and reliable data management. Built with Ruby on Rails, JavaScript (ES6), and SCSS, with a responsive UI.',
       FR: "Plateforme web conviviale pour découvrir et réserver des cours de langues facilement. Les apprenants filtrent, voient et réservent en quelques clics tout en gérant leurs réservations. Construite avec Ruby on Rails, JavaScript (ES6) et SCSS, avec UI responsive.",
       UA: 'Зручна веб-платформа для пошуку та бронювання мовних курсів. Учні фільтрують, переглядають та резервують уроки кількома кліками, керуючи бронюваннями. Створено з Ruby on Rails, JavaScript (ES6) та SCSS, з адаптивним UI.'
     },
     highlights: {
       EN: [
-        'Implemented <strong>secure authentication</strong> with Devise — login, signup, session management',
+        'Implemented <strong>secure authentication</strong> with Devise, login, signup, session management',
         'Built <strong>booking & cancellation flow</strong> with PostgreSQL relational data model',
         'Integrated <strong>Cloudinary</strong> for scalable image storage and upload'
       ],
       UA: [
-        'Реалізував <strong>безпечну автентифікацію</strong> з Devise — вхід, реєстрація, управління сесіями',
+        'Реалізував <strong>безпечну автентифікацію</strong> з Devise, вхід, реєстрація, управління сесіями',
         'Створив <strong>процес бронювання та скасування</strong> за допомогою реляційної моделі PostgreSQL',
         'Інтегрував <strong>Cloudinary</strong> для масштабованого зберігання та завантаження зображень'
       ],
       FR: [
-        "Implémentation d'une <strong>authentification sécurisée</strong> avec Devise — connexion, inscription, sessions",
+        "Implémentation d'une <strong>authentification sécurisée</strong> avec Devise, connexion, inscription, sessions",
         "Création du <strong>flux de réservation & annulation</strong> avec le modèle de données PostgreSQL",
         "Intégration de <strong>Cloudinary</strong> pour le stockage et le téléchargement d'images évolutifs"
       ],
       DE: [
-        'Implementierung der <strong>sicheren Authentifizierung</strong> mit Devise — Login, Registrierung, Sitzungsverwaltung',
+        'Implementierung der <strong>sicheren Authentifizierung</strong> mit Devise, Login, Registrierung, Sitzungsverwaltung',
         'Erstellung des <strong>Buchungs- und Stornierungsablaufs</strong> mit relationalem PostgreSQL-Datenmodell',
         'Integration von <strong>Cloudinary</strong> für skalierbare Bildspeicherung und -upload'
       ]
@@ -414,22 +414,22 @@ const localProjects = [
     },
     highlights: {
       EN: [
-        'Built full <strong>CRUD functionality</strong> — create, read, update, delete lists and movies',
+        'Built full <strong>CRUD functionality</strong>, create, read, update, delete lists and movies',
         'Integrated <strong>external movie API</strong> for search and data population',
         '<strong>Secure auth</strong> with Devise, responsive design with custom SCSS'
       ],
       UA: [
-        'Створив повний <strong>функціонал CRUD</strong> — створення, читання, оновлення, видалення списків та фільмів',
+        'Створив повний <strong>функціонал CRUD</strong>, створення, читання, оновлення, видалення списків та фільмів',
         'Інтегрував <strong>зовнішній API фільмів</strong> для пошуку та наповнення даних',
         '<strong>Безпечна автентифікація</strong> з Devise, адаптивний дизайн з кастомним SCSS'
       ],
       FR: [
-        'Création de la <strong>fonctionnalité CRUD</strong> complète — créer, lire, mettre à jour, supprimer des listes et des films',
+        'Création de la <strong>fonctionnalité CRUD</strong> complète, créer, lire, mettre à jour, supprimer des listes et des films',
         "Intégration d'une <strong>API externe de films</strong> pour la recherche et le peuplement des données",
         '<strong>Auth sécurisée</strong> avec Devise, design responsive avec SCSS personnalisé'
       ],
       DE: [
-        'Erstellung der vollständigen <strong>CRUD-Funktionalität</strong> — Erstellen, Lesen, Aktualisieren, Löschen von Listen und Filmen',
+        'Erstellung der vollständigen <strong>CRUD-Funktionalität</strong>, Erstellen, Lesen, Aktualisieren, Löschen von Listen und Filmen',
         'Integration einer <strong>externen Film-API</strong> zur Suche und Datenbefüllung',
         '<strong>Sichere Authentifizierung</strong> mit Devise, responsive Gestaltung mit benutzerdefiniertem SCSS'
       ]
