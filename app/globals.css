@@ -26,7 +26,7 @@
   --copy-email-hover: var(--bg-blue);
   --form-input-bg: var(--blue-light);
   --form-input-text: var(--purple);
-  --navbar-bg: rgba(255, 255, 255, 0.85);
+  --navbar-bg: transparent;
   --footer-text: #6b7280;
   --dot-color: var(--blue);
   --lang-menu-bg: var(--blue);
