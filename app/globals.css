@@ -16,6 +16,13 @@
   --btn-hover-bg: var(--blue);
   --toolbelt-cat-bg: var(--blue-light);
   --toolbelt-item-bg: var(--blue);
+  --toolbelt-card-bg: rgba(255, 255, 255, 0.65);
+  --toolbelt-card-border: rgba(99, 102, 241, 0.15);
+  --toolbelt-card-hover-bg: rgba(255, 255, 255, 0.85);
+  --pill-green-border: #10b981;
+  --pill-green-text: #047857;
+  --pill-green-bg: rgba(16, 185, 129, 0.05);
+  --pill-green-hover-bg: rgba(16, 185, 129, 0.12);
   --copy-email-hover: var(--bg-blue);
   --form-input-bg: var(--blue-light);
   --form-input-text: var(--purple);
@@ -52,6 +59,13 @@
   --btn-hover-bg: #A749D6;
   --toolbelt-cat-bg: #A749D6;
   --toolbelt-item-bg: var(--bg-blue);
+  --toolbelt-card-bg: rgba(22, 22, 69, 0.35);
+  --toolbelt-card-border: rgba(192, 132, 252, 0.25);
+  --toolbelt-card-hover-bg: rgba(22, 22, 69, 0.55);
+  --pill-green-border: #34d399;
+  --pill-green-text: #34d399;
+  --pill-green-bg: rgba(52, 211, 153, 0.08);
+  --pill-green-hover-bg: rgba(52, 211, 153, 0.18);
   --copy-email-hover: #A749D6;
   --form-input-bg: #c084fc;
   --form-input-text: #0f0f23;

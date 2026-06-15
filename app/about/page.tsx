@@ -71,6 +71,127 @@ const fallbackMilestones = [
   }
 ];
 
+interface ToolbeltCardProps {
+  title: string;
+  children: React.ReactNode;
+  gridColumn?: any;
+}
+
+function ToolbeltCard({ title, children, gridColumn }: ToolbeltCardProps) {
+  return (
+    <Box sx={{
+      p: { xs: 2.5, md: 3 },
+      width: '100%',
+      bgcolor: 'var(--toolbelt-card-bg)',
+      borderRadius: 4,
+      border: '1px solid var(--toolbelt-card-border)',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+      gridColumn: gridColumn,
+      backdropFilter: 'blur(10px)',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.01)',
+      '&:hover': {
+        transform: 'translateY(-4px)',
+        boxShadow: '0 12px 30px rgba(99, 102, 241, 0.06)',
+        borderColor: 'rgba(99, 102, 241, 0.3)',
+        bgcolor: 'var(--toolbelt-card-hover-bg)'
+      }
+    }}>
+      <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text)', fontSize: '1.25rem' }}>
+        {title}
+      </Typography>
+      <Box sx={{ width: '100%', height: '1px', bgcolor: 'var(--toolbelt-card-border)', my: 2, opacity: 0.6 }} />
+      <Box sx={{ display: 'flex', gap: 1.2, flexWrap: 'wrap', width: '100%', justifyContent: 'flex-start' }}>
+        {children}
+      </Box>
+    </Box>
+  );
+}
+
+interface ToolbeltPillProps {
+  label: string;
+  color?: 'purple' | 'green';
+}
+
+function ToolbeltPill({ label, color = 'purple' }: ToolbeltPillProps) {
+  const isGreen = color === 'green';
+  return (
+    <Typography sx={{
+      px: 2,
+      py: 0.6,
+      borderRadius: '9999px',
+      fontSize: { xs: '0.85rem', md: '0.9rem' },
+      fontWeight: 500,
+      border: isGreen ? '1.5px solid var(--pill-green-border)' : '1.5px solid var(--purple)',
+      color: isGreen ? 'var(--pill-green-text)' : 'var(--purple)',
+      bgcolor: isGreen ? 'var(--pill-green-bg)' : 'rgba(167, 73, 214, 0.03)',
+      transition: 'all 0.2s ease',
+      cursor: 'default',
+      userSelect: 'none',
+      '&:hover': {
+        transform: 'scale(1.05)',
+        bgcolor: isGreen ? 'var(--pill-green-hover-bg)' : 'rgba(167, 73, 214, 0.08)',
+        boxShadow: isGreen ? '0 2px 10px rgba(16, 185, 129, 0.12)' : '0 2px 10px rgba(167, 73, 214, 0.12)'
+      }
+    }}>
+      {label}
+    </Typography>
+  );
+}
+
+interface CertificatePillProps {
+  label: string;
+  tooltipTitle: string;
+}
+
+function CertificatePill({ label, tooltipTitle }: CertificatePillProps) {
+  return (
+    <Tooltip 
+      enterTouchDelay={0} 
+      leaveTouchDelay={60000} 
+      title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: tooltipTitle }} />} 
+      arrow 
+      placement="top" 
+      componentsProps={{ 
+        tooltip: { 
+          sx: { 
+            bgcolor: 'var(--purple)', 
+            color: 'white', 
+            maxWidth: 260,
+            fontSize: '0.85rem',
+            '& a': { color: '#60E7F1', textDecoration: 'underline' }
+          } 
+        } 
+      }}
+    >
+      <Typography sx={{
+        px: 2,
+        py: 0.6,
+        borderRadius: '9999px',
+        fontSize: { xs: '0.85rem', md: '0.9rem' },
+        fontWeight: 500,
+        border: '1.5px solid var(--purple)',
+        color: 'var(--purple)',
+        bgcolor: 'rgba(167, 73, 214, 0.03)',
+        transition: 'all 0.2s ease',
+        cursor: 'pointer',
+        userSelect: 'none',
+        '&:hover': {
+          transform: 'scale(1.05)',
+          bgcolor: 'var(--purple)',
+          color: '#ffffff',
+          boxShadow: '0 4px 12px rgba(167, 73, 214, 0.2)'
+        }
+      }}>
+        {label}
+      </Typography>
+    </Tooltip>
+  );
+}
+
 export default function AboutPage() {
   const pathname = usePathname();
   const router = useRouter();
@@ -236,130 +357,91 @@ export default function AboutPage() {
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'flex-start',
           gap: 4,
-          pb: 20
+          pt: { xs: 12, md: 18 },
+          pb: { xs: 15, md: 20 }
         }}>
-          <Typography variant='h3' sx={{ marginTop: { xs: 5, md: 10 } }}>
-            <strong>{t('about_toolbelt')}</strong>
-          </Typography>
-          <Typography variant="h4" sx={{ mb: 0.5, fontWeight: 600, position: 'relative', top: -50, lineHeight: 1 }}>
-            <span style={{ color: 'var(--blue)' }}>____</span>
-          </Typography>
+          <Box sx={{ mb: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <Typography variant='h3' sx={{ fontWeight: 700, color: 'var(--text)' }}>
+              <strong>{t('about_toolbelt')}</strong>
+            </Typography>
+            <Box sx={{ width: 60, height: 4, bgcolor: 'var(--blue)', mt: 1.5, borderRadius: 1 }} />
+          </Box>
 
-          {/* ✅ Ряд 1: Бокси 1-2 */}
+          {/* Grid Layout */}
           <Box sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-            gap: 3, mt: -2
+            gap: 3,
+            width: '100%'
           }}>
             {/* Languages */}
-            <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
-              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
-              transition: 'all 0.3s ease',
-              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
-            }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_languages')}</Typography>
-              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>HTML</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>CSS</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>JavaScript</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Ruby</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Python</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>TypeScript</Typography>
-              </Box>
-            </Box>
+            <ToolbeltCard title={t('about_languages')}>
+              <ToolbeltPill label="HTML" />
+              <ToolbeltPill label="CSS" />
+              <ToolbeltPill label="JavaScript" />
+              <ToolbeltPill label="Ruby" />
+              <ToolbeltPill label="Python" />
+              <ToolbeltPill label="TypeScript" />
+            </ToolbeltCard>
 
-            {/* Languages */}
-            <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
-              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
-              transition: 'all 0.3s ease',
-              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
-            }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_frontend')}</Typography>
-              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>React</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Next.js</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Tailwind</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Bootstrap</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>MUI</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Responsive</Typography>
-              </Box>
-            </Box>
-            {/* Languages */}
-            <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
-              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
-              transition: 'all 0.3s ease',
-              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
-            }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_backend')}</Typography>
-              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Ruby on Rails</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>ActiveRecord</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>OOP</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>APIs</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>SQL</Typography>
-              </Box>
-            </Box>
-            {/* Languages */}
-            <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
-              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
-              transition: 'all 0.3s ease',
-              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
-            }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_devops')}</Typography>
-              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Git</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>GitHub</Typography>
-              </Box>
-            </Box>
-            {/* Languages */}
-            <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
-              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
-              transition: 'all 0.3s ease',
-              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
-            }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_data')}</Typography>
-              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Pandas</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Power BI</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Tableau</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>Matplotlib</Typography>
-                <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)' }}>PostgreSQL</Typography>
-              </Box>
-            </Box>
-            {/* Languages */}
-            <Box sx={{
-              p: { xs: 2, md: 4 }, minHeight: 350, width: '100%', bgcolor: 'var(--toolbelt-cat-bg)', borderRadius: 3, border: '2px solid var(--blue)', mt: -5, mb: 6,
-              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 3,
-              transition: 'all 0.3s ease',
-              '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 12px 30px rgba(236, 231, 243, 0.5)' }
-            }}>
-              {/* Certificates */}
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text)', mt: 1 }}>{t('about_certificates')}</Typography>
+            {/* Frontend */}
+            <ToolbeltCard title={t('about_frontend')}>
+              <ToolbeltPill label="React" />
+              <ToolbeltPill label="Next.js" />
+              <ToolbeltPill label="Tailwind" />
+              <ToolbeltPill label="Bootstrap" />
+              <ToolbeltPill label="MUI" />
+              <ToolbeltPill label="Responsive" />
+            </ToolbeltCard>
 
-              <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', justifyContent: 'center' }}>
-                {/* BA Philosophy */}
-                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_philo_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.1rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_philo_chip')}</Typography>
-                </Tooltip>
-                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_npower_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_npower_chip')}</Typography>
-                </Tooltip>
-                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_lewagon_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_lewagon_chip')}</Typography>
-                </Tooltip>
-                <Tooltip enterTouchDelay={0} leaveTouchDelay={60000} title={<Box sx={{ p: 1, fontSize: '0.875rem' }} dangerouslySetInnerHTML={{ __html: t('cert_firstaid_tooltip') }} />} arrow placement="top" componentsProps={{ tooltip: { sx: { bgcolor: 'var(--purple)', color: 'white', maxWidth: 250 } } }}>
-                  <Typography sx={{ bgcolor: 'var(--toolbelt-item-bg)', px: 1.5, py: 0.5, borderRadius: 2, fontSize: { xs: '1rem', md: '1.2rem' }, border: '2px solid var(--purple)', transition: 'all 0.2s ease', '&:hover': { transform: 'scale(1.1)', bgcolor: 'var(--purple)', cursor: 'pointer' } }}>{t('cert_firstaid_chip')}</Typography>
-                </Tooltip>
-              </Box>
-            </Box>
+            {/* Backend */}
+            <ToolbeltCard title={t('about_backend')}>
+              <ToolbeltPill label="Ruby on Rails" />
+              <ToolbeltPill label="ActiveRecord" />
+              <ToolbeltPill label="OOP" />
+              <ToolbeltPill label="APIs" />
+              <ToolbeltPill label="SQL" />
+            </ToolbeltCard>
+
+            {/* Data */}
+            <ToolbeltCard title={t('about_data')}>
+              <ToolbeltPill label="Pandas" />
+              <ToolbeltPill label="NumPy" />
+              <ToolbeltPill label="Matplotlib" />
+              <ToolbeltPill label="Power BI" />
+              <ToolbeltPill label="Tableau" />
+              <ToolbeltPill label="PostgreSQL" />
+              <ToolbeltPill label="Plotly" />
+              <ToolbeltPill label="Dash" />
+              <ToolbeltPill label="Scikit-learn" />
+            </ToolbeltCard>
+
+            {/* DevOps */}
+            <ToolbeltCard title={t('about_devops')}>
+              <ToolbeltPill label="Git" />
+              <ToolbeltPill label="GitHub" />
+            </ToolbeltCard>
+
+            {/* Design */}
+            <ToolbeltCard title={t('about_design')}>
+              <ToolbeltPill label="Figma" />
+              <ToolbeltPill label="UI/UX" />
+            </ToolbeltCard>
+
+            {/* Certificates & Education */}
+            <ToolbeltCard 
+              title={t('about_certificates')} 
+              gridColumn={{ md: '1 / span 3', sm: '1 / span 2', xs: '1 / -1' }}
+            >
+              <CertificatePill label={t('cert_lewagon_chip')} tooltipTitle={t('cert_lewagon_tooltip')} />
+              <CertificatePill label={t('cert_npower_chip')} tooltipTitle={t('cert_npower_tooltip')} />
+              <CertificatePill label={t('cert_philo_chip')} tooltipTitle={t('cert_philo_tooltip')} />
+              <CertificatePill label={t('cert_firstaid_chip')} tooltipTitle={t('cert_firstaid_tooltip')} />
+            </ToolbeltCard>
           </Box>
-        </Container >
+        </Container>
 
 
         <Container sx={{
