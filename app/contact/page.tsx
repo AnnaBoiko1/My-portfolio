@@ -44,12 +44,14 @@ export default function ContactPage() {
         {/* Секція  - перша snap точка */}
         <Container maxWidth="lg" sx={{
           scrollSnapAlign: 'start',
+          scrollMarginTop: { xs: '60px', md: '90px' },
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           gap: 2,
-          pb: 20 // ✅ Така ж відстань перед наступною секцією як у Home
+          pt: { xs: 10, md: '10vh' },
+          pb: { xs: 12, md: 20 }
         }}>
 
           {/* ✅ 2 КОНТЕНТ КОЛОНКИ як у Bootstrap */}
@@ -60,154 +62,198 @@ export default function ContactPage() {
                 maxWidth: '100%', // ✅ Responsive
                 mx: 0            // ✅ Left alignment
               }}>
-                <Typography variant='h3' sx={{ marginTop: { xs: '-8px', md: 15 }, mb: 3 }}>
-                  <strong>{t('contact_title')}</strong>
+                <Typography variant='h3' sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '2.2rem', md: '2.8rem' } }}>
+                  {t('contact_title')}
                 </Typography>
-                <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: { xs: -30, md: -20 }, lineHeight: 1 }}>
+
+                {/* Blue underline decoration */}
+                <Typography variant="h4" sx={{ mb: 2.5, fontWeight: 600, position: 'relative', lineHeight: 1 }}>
                   <span style={{ color: 'var(--blue)' }}>____</span>
                 </Typography>
-                <Box sx={{ textAlign: 'start' }}>
-                  <Typography variant='h4' sx={{ mb: 1 }}>
-                    {t('common_full_name')}
-                  </Typography>
-                </Box>
+
+                {/* Job Search Status Pill */}
                 <Box sx={{
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  width: 'fit-content',
-                  mb: 1,
-                  gap: 1.5,
-                  opacity: 0.9,
-                  minHeight: '60px' // Ensure stable height when merging
+                  gap: 1.2,
+                  px: 2,
+                  py: 0.8,
+                  borderRadius: '50px',
+                  border: '1px solid var(--pill-green-border)',
+                  bgcolor: 'var(--pill-green-bg)',
+                  color: 'var(--pill-green-text)',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  mb: 3,
+                  lineHeight: 1.2
                 }}>
-                  {/* Part 1: Email */}
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box
-                      onClick={async () => {
-                        try {
-                          await navigator.clipboard.writeText('annaboiko1@icloud.com');
-                          setCopied(true);
-                        } catch (err) {
-                          const textArea = document.createElement('textarea');
-                          textArea.value = 'annaboiko1@icloud.com';
-                          document.body.appendChild(textArea);
-                          textArea.select();
-                          document.execCommand('copy');
-                          document.body.removeChild(textArea);
-                          setCopied(true);
-                        }
-                      }}
-                      sx={{ cursor: 'pointer', color: 'var(--purple)' }}
-                    >
-                      <Typography variant='h4' sx={{
+                  <Box sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: 'var(--pill-green-text)', flexShrink: 0 }} />
+                  <span>{t('contact_status_pill')}</span>
+                </Box>
+
+                {/* Short Paragraph Description */}
+                <Typography variant='h5' sx={{
+                  mb: 4,
+                  fontSize: { xs: '1rem', md: '1.2rem' },
+                  lineHeight: 1.6,
+                  fontWeight: 400,
+                  color: 'var(--text)',
+                  opacity: 0.9
+                }} dangerouslySetInnerHTML={{ __html: t('contact_description') }} />
+
+                {/* Contact Links List */}
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.8, mb: 5 }}>
+                  {/* Email Row */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', color: 'var(--text)', opacity: 0.7, flexShrink: 0 }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                    </Box>
+
+                    {/* Email address + inline actions */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', minWidth: 0 }}>
+                      <Typography variant='h5' sx={{
+                        fontSize: { xs: '1rem', md: '1.2rem' },
                         textDecoration: 'underline',
                         textDecorationColor: 'var(--purple)',
                         textDecorationThickness: '2px',
                         textUnderlineOffset: '4px',
+                        fontWeight: 500,
+                        color: 'var(--purple)',
+                        cursor: 'pointer',
+                        flexShrink: 0,
+                        '&:hover': {
+                          color: 'var(--blue)',
+                          textDecorationColor: 'var(--blue)',
+                        }
+                      }}
+                        onClick={async () => {
+                          try {
+                            await navigator.clipboard.writeText('annaboiko1@icloud.com');
+                            setCopied(true);
+                          } catch (err) {
+                            const textArea = document.createElement('textarea');
+                            textArea.value = 'annaboiko1@icloud.com';
+                            document.body.appendChild(textArea);
+                            textArea.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            setCopied(true);
+                          }
+                        }}
+                      >
+                        annaboiko1@icloud.com
+                      </Typography>
+
+                      {/* Inline actions */}
+                      {copied ? (
+                        <Typography sx={{ fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                          {t('contact_copied')}
+                        </Typography>
+                      ) : (
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0, flexShrink: 0 }}>
+                          <Typography
+                            onClick={async () => {
+                              try {
+                                await navigator.clipboard.writeText('annaboiko1@icloud.com');
+                                setCopied(true);
+                              } catch (err) {
+                                const textArea = document.createElement('textarea');
+                                textArea.value = 'annaboiko1@icloud.com';
+                                document.body.appendChild(textArea);
+                                textArea.select();
+                                document.execCommand('copy');
+                                document.body.removeChild(textArea);
+                                setCopied(true);
+                              }
+                            }}
+                            sx={{ fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', lineHeight: 1.6, '&:hover': { opacity: 0.7 } }}
+                          >
+                            {t('contact_copy')}
+                          </Typography>
+                          <Typography
+                            component="a"
+                            href="mailto:annaboiko1@icloud.com"
+                            sx={{ fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', textDecoration: 'none', lineHeight: 1.6, '&:hover': { opacity: 0.7 } }}
+                          >
+                            {t('contact_email')}
+                          </Typography>
+                        </Box>
+                      )}
+                    </Box>
+                  </Box>
+
+                  {/* Location Row */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', color: 'var(--text)', opacity: 0.7 }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                    </Box>
+                    <Typography variant='h5' sx={{
+                      fontSize: { xs: '1rem', md: '1.2rem' },
+                      fontWeight: 400,
+                      color: 'var(--text)'
+                    }}>
+                      {t('contact_location_text')}
+                    </Typography>
+                  </Box>
+
+                  {/* LinkedIn Row */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', color: 'var(--text)', opacity: 0.7 }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                      </svg>
+                    </Box>
+                    <Link href="https://www.linkedin.com/in/anna-boiko1/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <Typography variant='h5' sx={{
+                        fontSize: { xs: '1rem', md: '1.2rem' },
+                        color: 'var(--purple)',
+                        textDecoration: 'underline',
+                        textDecorationColor: 'transparent',
+                        textUnderlineOffset: '4px',
+                        fontWeight: 500,
+                        transition: 'all 0.2s',
                         '&:hover': {
                           color: 'var(--blue)',
                           textDecorationColor: 'var(--blue)',
                         }
                       }}>
-                        annaboiko1@icloud.com
+                        linkedin.com/in/anna-boiko1
                       </Typography>
-                    </Box>
+                    </Link>
                   </Box>
 
-                  {/* Part 2: Actions */}
-                  <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    minWidth: { xs: '80px', md: '100px' },
-                    height: '100%'
-                  }}>
-                    {copied ? (
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontSize: { xs: '0.65rem', md: '0.8rem' },
+                  {/* GitHub Row */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', color: 'var(--text)', opacity: 0.7 }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.058-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.176 2.873.171 3.176.768.84 1.239 1.91 1.239 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                    </Box>
+                    <Link href="https://github.com/AnnaBoiko1" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <Typography variant='h5' sx={{
+                        fontSize: { xs: '1rem', md: '1.2rem' },
+                        color: 'var(--purple)',
+                        textDecoration: 'underline',
+                        textDecorationColor: 'transparent',
+                        textUnderlineOffset: '4px',
+                        fontWeight: 500,
+                        transition: 'all 0.2s',
+                        '&:hover': {
                           color: 'var(--blue)',
-                          fontWeight: 600,
-                          textAlign: 'center',
-                          whiteSpace: 'nowrap'
-                        }}
-                      >
-                        {t('contact_copied')}
+                          textDecorationColor: 'var(--blue)',
+                        }
+                      }}>
+                        github.com/AnnaBoiko1
                       </Typography>
-                    ) : (
-                      <>
-                        {/* Copy Button */}
-                        <Box
-                          onClick={async () => {
-                            try {
-                              await navigator.clipboard.writeText('annaboiko1@icloud.com');
-                              setCopied(true);
-
-                            } catch (err) {
-                              const textArea = document.createElement('textarea');
-                              textArea.value = 'annaboiko1@icloud.com';
-                              document.body.appendChild(textArea);
-                              textArea.select();
-                              document.execCommand('copy');
-                              document.body.removeChild(textArea);
-                              setCopied(true);
-
-                            }
-                          }}
-                          sx={{
-                            cursor: 'pointer',
-                            color: 'var(--blue)',
-                            '&:hover': { opacity: 0.7 },
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-start'
-                          }}
-                        >
-                          <Typography variant="h6" sx={{ fontSize: { xs: '0.65rem', md: '0.8rem' }, fontWeight: 500 }}>
-                            {t('contact_copy')}
-                          </Typography>
-                        </Box>
-
-                        {/* Email Button */}
-                        <Box
-                          onClick={async () => {
-                            try {
-                              await navigator.clipboard.writeText('annaboiko1@icloud.com');
-                              setCopied(true);
-
-                            } catch (err) {
-                              const textArea = document.createElement('textarea');
-                              textArea.value = 'annaboiko1@icloud.com';
-                              document.body.appendChild(textArea);
-                              textArea.select();
-                              document.execCommand('copy');
-                              document.body.removeChild(textArea);
-                              setCopied(true);
-
-                            }
-                          }}
-                          sx={{
-                            cursor: 'pointer',
-                            color: 'var(--blue)',
-                            '&:hover': { opacity: 0.7 },
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-start'
-                          }}
-                        >
-                          <Typography variant="h6" sx={{ fontSize: { xs: '0.65rem', md: '0.8rem' }, fontWeight: 500 }}>
-                            {t('contact_email')}
-                          </Typography>
-                        </Box>
-                      </>
-                    )}
+                    </Link>
                   </Box>
                 </Box>
-
-                <Typography variant='h4' sx={{ mb: 4 }}>
-                  {t('contact_based_in')}
-                </Typography>
 
                 {/* Cal.com  */}
                 <Box
@@ -217,8 +263,10 @@ export default function ContactPage() {
                   sx={{
                     width: '100%',
                     maxWidth: '450px',
-                    height: '60px',
-                    py: 1,
+                    minHeight: '60px',
+                    height: 'auto',
+                    py: 1.5,
+                    px: 2,
                     fontSize: '1.5rem',
                     fontWeight: 600,
                     color: 'var(--btn-text)',
@@ -234,6 +282,7 @@ export default function ContactPage() {
                     position: 'relative',
                     backgroundOrigin: 'padding-box',
                     borderRadius: 3,
+                    boxSizing: 'border-box',
                     '&::before': {
                       content: '""',
                       position: 'absolute',
@@ -255,54 +304,9 @@ export default function ContactPage() {
                     }
                   }}
                 >
-                  <Typography variant='h5' sx={{ fontWeight: 600, fontSize: { xs: '1.3rem', sm: '1.6rem', md: '1.9rem' }, whiteSpace: 'nowrap' }}>
+                  <Typography variant='h5' sx={{ fontWeight: 600, fontSize: { xs: '1.1rem', sm: '1.4rem', md: '1.6rem' }, textAlign: 'center' }}>
                     {t('contact_schedule_appointment')}
                   </Typography>
-                </Box>
-
-                {/* Find me on */}
-                <Box sx={{ mt: 6, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Typography variant='h5' sx={{ mb: 0.5, opacity: 0.8, fontWeight: 600 }}>
-                    {t('contact_find_me_on')}
-                  </Typography>
-                </Box>
-
-
-                <Box sx={{ display: 'flex', gap: 0.1, justifyContent: 'center' }}>
-                  <Link href="https://github.com/AnnaBoiko1" target="_blank" rel="noopener noreferrer">
-                    <Box sx={{
-                      width: 48, height: 48,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--purple)',
-                      '&:hover': {
-                        color: 'var(--blue)',
-                        backgroundImage: 'none',
-                      }
-                    }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.058-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.176 2.873.171 3.176.768.84 1.239 1.91 1.239 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                      </svg>
-                    </Box>
-                  </Link>
-                  <Link href="https://www.linkedin.com/in/anna-boiko1/" target="_blank" rel="noopener noreferrer">
-                    <Box sx={{
-                      width: 48, height: 48,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--purple)',
-                      '&:hover': {
-                        color: 'var(--blue)',
-                        backgroundImage: 'none',
-                      }
-                    }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                      </svg>
-                    </Box>
-                  </Link>
                 </Box>
 
 
@@ -311,7 +315,7 @@ export default function ContactPage() {
 
             {/* ПРАВА КОЛОНКА - Форма (Desktop Only) */}
             <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
-              <Box sx={{ p: 4, borderRadius: 10, bgcolor: 'transparent', mt: 15 }}>
+              <Box sx={{ p: 4, borderRadius: 10, bgcolor: 'transparent', mt: 0 }}>
                 <ContactForm />
               </Box>
             </Grid>

@@ -65,6 +65,9 @@ export const translations = {
         // Contact Page
         contact_header: "Contact",
         contact_title: "Contact me",
+        contact_status_pill: "Open to full-time opportunities in Toronto · hybrid or remote",
+        contact_description: "I'm currently looking for a <strong>full-time role</strong> in web development or data analytics in Toronto. If you're hiring, collaborating, or just want to connect, I'd love to hear from you.",
+        contact_location_text: "Toronto, ON · Canada",
         contact_based_in: "Based in Toronto, ON Canada",
         contact_schedule_appointment: "Schedule an Appointment",
         contact_find_me_on: "Find me on",
@@ -163,6 +166,9 @@ export const translations = {
         // Contact Page
         contact_header: "Контакти",
         contact_title: "Зв'яжіться зі мною",
+        contact_status_pill: "Відкрита до пропозицій на повний робочий день у Торонто · гібрид або віддалено",
+        contact_description: "Наразі я шукаю <strong>роботу на повний день</strong> у сфері веб-розробки або аналітики даних у Торонто. Якщо ви наймаєте, шукаєте партнерів чи просто хочете поспілкуватися, буду рада вашому повідомленню.",
+        contact_location_text: "Торонто, Онтаріо · Канада",
         contact_based_in: "Знаходжусь у Торонто, Канада",
         contact_schedule_appointment: "Запланувати зустріч",
         contact_find_me_on: "Знайдіть мене тут",
@@ -260,6 +266,9 @@ export const translations = {
         // Contact Page
         contact_header: "Contact",
         contact_title: "Contactez-moi",
+        contact_status_pill: "Disponible pour des opportunités à plein temps à Toronto · hybride ou à distance",
+        contact_description: "Je suis actuellement à la recherche d'un <strong>poste à plein temps</strong> dans le développement web ou l'analyse de données à Toronto. Si vous recrutez, collaborez ou souhaitez simplement vous connecter, j'aimerais beaucoup avoir de vos nouvelles.",
+        contact_location_text: "Toronto, ON · Canada",
         contact_based_in: "Basée à Toronto, ON Canada",
         contact_schedule_appointment: "Prendre rendez-vous",
         contact_find_me_on: "Retrouvez-moi sur",
@@ -357,6 +366,9 @@ export const translations = {
         // Contact Page
         contact_header: "Kontakt",
         contact_title: "Kontaktiere mich",
+        contact_status_pill: "Offen für Vollzeitstellen in Toronto · Hybrid oder Remote",
+        contact_description: "Ich suche derzeit nach einer <strong>Vollzeitstelle</strong> in der Webentwicklung oder Datenanalyse in Toronto. Wenn Sie einstellen, zusammenarbeiten oder sich einfach vernetzen möchten, ich freue mich, von Ihnen zu hören.",
+        contact_location_text: "Toronto, ON · Kanada",
         contact_based_in: "Mit Sitz in Toronto, ON Kanada",
         contact_schedule_appointment: "Termin vereinbaren",
         contact_find_me_on: "Finde mich auf",

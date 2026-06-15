@@ -26,7 +26,7 @@
   --copy-email-hover: var(--bg-blue);
   --form-input-bg: var(--blue-light);
   --form-input-text: var(--purple);
-  --navbar-bg: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.05) 20%);
+  --navbar-bg: rgba(255, 255, 255, 0.85);
   --footer-text: #6b7280;
   --dot-color: var(--blue);
   --lang-menu-bg: var(--blue);
@@ -69,7 +69,7 @@
   --copy-email-hover: #A749D6;
   --form-input-bg: #c084fc;
   --form-input-text: #0f0f23;
-  --navbar-bg: transparent;
+  --navbar-bg: rgba(15, 15, 35, 0.85);
   --footer-text: var(--purple);
   --dot-color: var(--purple);
   --lang-menu-bg: var(--blue);

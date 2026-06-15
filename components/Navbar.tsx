@@ -80,7 +80,7 @@ export default function Navbar() {
 
     // --- Styles ---
     const navLinkStyle = (path: string) => ({
-        fontSize: '1.4rem',
+        fontSize: { md: '1.1rem', lg: '1.25rem', xl: '1.4rem' },
         color: pathname === path ? 'var(--purple)' : 'var(--text)',
         textTransform: 'none',
         minWidth: 0,
@@ -131,13 +131,13 @@ export default function Navbar() {
 
 
                 {/* Center: Navigation */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: { md: 2, lg: 4, xl: 6 }, justifyContent: 'center' }}>
                     <Button onClick={() => router.push('/')} sx={navLinkStyle('/')}>{t('nav_home')}</Button>
-                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+                    <NavigationSeparator sx={{ fontSize: { md: '1.1rem', lg: '1.25rem', xl: '1.4rem' }, color: 'var(--text)', lineHeight: 1 }} />
                     <Button onClick={() => router.push('/about')} sx={navLinkStyle('/about')}>{t('nav_about')}</Button>
-                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+                    <NavigationSeparator sx={{ fontSize: { md: '1.1rem', lg: '1.25rem', xl: '1.4rem' }, color: 'var(--text)', lineHeight: 1 }} />
                     <Button onClick={() => router.push('/projects')} sx={navLinkStyle('/projects')}>{t('nav_projects')}</Button>
-                    <NavigationSeparator sx={{ fontSize: '1.4rem', color: 'var(--text)', lineHeight: 1 }} />
+                    <NavigationSeparator sx={{ fontSize: { md: '1.1rem', lg: '1.25rem', xl: '1.4rem' }, color: 'var(--text)', lineHeight: 1 }} />
                     <Button onClick={() => router.push('/contact')} sx={navLinkStyle('/contact')}>{t('nav_contact')}</Button>
                 </Box>
 
