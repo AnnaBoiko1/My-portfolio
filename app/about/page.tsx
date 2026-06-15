@@ -456,7 +456,113 @@ export default function AboutPage() {
             <strong>{t('about_create_meaningful')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
           </Typography>
           <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
-          <Typography variant='h5' sx={{ mt: -3, fontSize: { xs: '1rem', md: '1.5rem' } }} dangerouslySetInnerHTML={{ __html: t('about_create_description') }} />
+          <Typography variant='h5' sx={{ mt: -3, fontSize: { xs: '1rem', md: '1.25rem' }, lineHeight: 1.6, color: 'var(--text)' }} dangerouslySetInnerHTML={{ __html: t('about_create_description') }} />
+
+          <Box sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+            gap: 2.5,
+            width: '100%',
+            mt: 4,
+            mb: 4
+          }}>
+            {/* Philosophy Card */}
+            <Box sx={{
+              p: { xs: 2.5, md: 3 },
+              bgcolor: 'var(--toolbelt-card-bg)',
+              borderRadius: 4,
+              border: '1px solid var(--toolbelt-card-border)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.01)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 12px 30px rgba(99, 102, 241, 0.06)',
+                borderColor: 'rgba(99, 102, 241, 0.3)',
+                bgcolor: 'var(--toolbelt-card-hover-bg)'
+              }
+            }}>
+              <Typography sx={{ fontWeight: 700, color: 'var(--text)', mb: 1, fontSize: '1.1rem' }}>
+                {t('about_card_philosophy_title')}
+              </Typography>
+              <Typography sx={{ color: 'var(--text)', opacity: 0.85, fontSize: '0.95rem', lineHeight: 1.5 }}>
+                {t('about_card_philosophy_desc')}
+              </Typography>
+            </Box>
+
+            {/* Retail Card */}
+            <Box sx={{
+              p: { xs: 2.5, md: 3 },
+              bgcolor: 'var(--toolbelt-card-bg)',
+              borderRadius: 4,
+              border: '1px solid var(--toolbelt-card-border)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.01)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 12px 30px rgba(99, 102, 241, 0.06)',
+                borderColor: 'rgba(99, 102, 241, 0.3)',
+                bgcolor: 'var(--toolbelt-card-hover-bg)'
+              }
+            }}>
+              <Typography sx={{ fontWeight: 700, color: 'var(--text)', mb: 1, fontSize: '1.1rem' }}>
+                {t('about_card_retail_title')}
+              </Typography>
+              <Typography sx={{ color: 'var(--text)', opacity: 0.85, fontSize: '0.95rem', lineHeight: 1.5 }}>
+                {t('about_card_retail_desc')}
+              </Typography>
+            </Box>
+
+            {/* Le Wagon Card */}
+            <Box sx={{
+              p: { xs: 2.5, md: 3 },
+              bgcolor: 'var(--toolbelt-card-bg)',
+              borderRadius: 4,
+              border: '1px solid var(--toolbelt-card-border)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.01)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 12px 30px rgba(99, 102, 241, 0.06)',
+                borderColor: 'rgba(99, 102, 241, 0.3)',
+                bgcolor: 'var(--toolbelt-card-hover-bg)'
+              }
+            }}>
+              <Typography sx={{ fontWeight: 700, color: 'var(--text)', mb: 1, fontSize: '1.1rem' }}>
+                {t('about_card_wagon_title')}
+              </Typography>
+              <Typography sx={{ color: 'var(--text)', opacity: 0.85, fontSize: '0.95rem', lineHeight: 1.5 }}>
+                {t('about_card_wagon_desc')}
+              </Typography>
+            </Box>
+
+            {/* Starting Over Twice Card */}
+            <Box sx={{
+              p: { xs: 2.5, md: 3 },
+              bgcolor: 'var(--toolbelt-card-bg)',
+              borderRadius: 4,
+              border: '1px solid var(--toolbelt-card-border)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.01)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 12px 30px rgba(99, 102, 241, 0.06)',
+                borderColor: 'rgba(99, 102, 241, 0.3)',
+                bgcolor: 'var(--toolbelt-card-hover-bg)'
+              }
+            }}>
+              <Typography sx={{ fontWeight: 700, color: 'var(--text)', mb: 1, fontSize: '1.1rem' }}>
+                {t('about_card_starting_title')}
+              </Typography>
+              <Typography sx={{ color: 'var(--text)', opacity: 0.85, fontSize: '0.95rem', lineHeight: 1.5 }}>
+                {t('about_card_starting_desc')}
+              </Typography>
+            </Box>
+          </Box>
+
           <Button
             onClick={() => {
               window.location.href = 'mailto:annaboiko1@icloud.com?subject=Let%27s%20work%20together&body=Hi%20Anna,%0A%0AI%20am%20interested%20in%20working%20together.%0A%0ABest%20regards';
