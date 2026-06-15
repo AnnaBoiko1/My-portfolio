@@ -683,43 +683,13 @@ export default function ProjectsPage() {
 
   const renderHeader = () => {
     return (
-      <Box sx={{ width: '100%', mb: { xs: 2, md: 4 } }}>
+      <Box sx={{ width: '100%', mb: { xs: 1, md: 2 } }}>
         <Typography variant='h3' sx={{ marginTop: { xs: '60px', md: 12 }, fontWeight: 700, color: 'var(--text)' }}>
           <strong>{t('projects_title')}</strong>
         </Typography>
         <Typography variant="h4" sx={{ mb: 1, fontWeight: 600, position: 'relative', top: { xs: -25, md: -15 }, lineHeight: 1 }}>
           <span style={{ color: 'var(--blue)' }}>____</span>
         </Typography>
-
-        {/* Categories filters */}
-        <Box sx={{ display: 'flex', gap: { xs: 1, md: 2 }, flexWrap: 'wrap', mt: 1, mb: 1 }}>
-          {categories.map((cat) => (
-            <Button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              sx={{
-                borderRadius: '50px',
-                px: { xs: 2.5, md: 4 },
-                py: { xs: 0.7, md: 1 },
-                textTransform: 'none',
-                fontWeight: 700,
-                fontSize: { xs: '0.85rem', md: '0.95rem' },
-                border: '2px solid var(--purple)',
-                bgcolor: activeCategory === cat.id ? 'var(--purple)' : 'transparent',
-                color: activeCategory === cat.id ? '#ffffff' : 'var(--text)',
-                boxShadow: activeCategory === cat.id ? '0 4px 15px rgba(167, 73, 214, 0.4)' : 'none',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                '&:hover': {
-                  bgcolor: activeCategory === cat.id ? 'var(--purple)' : 'rgba(167, 73, 214, 0.1)',
-                  transform: 'translateY(-1px)',
-                  boxShadow: activeCategory === cat.id ? '0 6px 20px rgba(167, 73, 214, 0.5)' : '0 4px 12px rgba(167, 73, 214, 0.15)',
-                }
-              }}
-            >
-              {t(cat.translationKey)}
-            </Button>
-          ))}
-        </Box>
       </Box>
     );
   };
@@ -895,7 +865,7 @@ export default function ProjectsPage() {
     );
   };
 
-  const renderLayout0 = (project: any, isFirstSlide: boolean) => {
+  const renderLayout0 = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
         scrollSnapAlign: 'start',
@@ -906,11 +876,9 @@ export default function ProjectsPage() {
         gap: 2,
         pb: 20
       }}>
-        {isFirstSlide && renderHeader()}
-
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: isFirstSlide ? 1 : 12 }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 0, md: 4 }, mt: { xs: 14, md: 22 } }}>
           {/* MOBILE ONLY: Side-by-side layout */}
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', gap: 1, mt: isFirstSlide ? -2 : 0, alignItems: 'center' }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', gap: 1, mt: 0, alignItems: 'center' }}>
             <Box sx={{ width: '50%', ml: -1 }}>
               <ImageCarousel images={project.images} alt={project.name?.[language] || project.name?.EN || ""} slideWidth="100%" />
             </Box>
@@ -941,15 +909,13 @@ export default function ProjectsPage() {
     );
   };
 
-  const renderLayout1 = (project: any, isFirstSlide: boolean) => {
+  const renderLayout1 = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
         scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
       }}>
-        {isFirstSlide && renderHeader()}
-
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: isFirstSlide ? 1 : 12 }}>
-          <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10 }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: { xs: 14, md: 22 } }}>
+          <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10, pt: { md: 6 } }}>
             <Box sx={{ order: { xs: 1, md: 1 }, width: '100%' }}>
               {renderProjectDetailsTop(project)}
             </Box>
@@ -958,7 +924,7 @@ export default function ProjectsPage() {
             </Box>
           </Box>
 
-          <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, mt: { xs: 0, md: -2 }, width: '100%' }}>
+          <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, width: '100%' }}>
             {/* MOBILE: Carousel */}
             <Box sx={{ order: { xs: 2, md: 2 }, display: { xs: 'block', md: 'none' }, width: '100%', mt: { xs: -4, md: 2 } }}>
               <ImageCarousel images={project.images} alt={project.name?.[language] || project.name?.EN || ""} objectFit="contain" />
@@ -979,15 +945,13 @@ export default function ProjectsPage() {
     );
   };
 
-  const renderLayout2 = (project: any, isFirstSlide: boolean) => {
+  const renderLayout2 = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
         scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
       }}>
-        {isFirstSlide && renderHeader()}
-
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: isFirstSlide ? 1 : 12 }}>
-          <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, mt: { xs: 0, md: 7 }, width: '100%' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 0, md: 4 }, mt: { xs: 14, md: 22 } }}>
+          <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, width: '100%' }}>
             <Box sx={{ order: { xs: 2, md: 1 }, width: '100%', mt: { xs: 2, md: 0 } }}>
               <Image src={project.images?.[0] || '/img_placeholder.png'} alt={project.name?.[language] || project.name?.EN || ""} width={300} height={300} priority style={{
                 width: '100%', height: '100%', maxHeight: '50vh', objectFit: 'cover', display: 'block'
@@ -1007,7 +971,7 @@ export default function ProjectsPage() {
     );
   };
 
-  const renderBankChurnProject = (project: any, isFirstSlide: boolean) => {
+  const renderBankChurnProject = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
         scrollSnapAlign: 'start',
@@ -1018,9 +982,7 @@ export default function ProjectsPage() {
         gap: 2,
         pb: 20
       }}>
-        {isFirstSlide && renderHeader()}
-
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'stretch', gap: { xs: 4, md: 6 }, mt: isFirstSlide ? 1 : 12, width: '100%' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'stretch', gap: { xs: 4, md: 6 }, mt: { xs: 14, md: 22 }, width: '100%' }}>
           {/* Left panel: Horizontal scrollable screenshots gallery */}
           <Box sx={{ position: 'relative', flex: 1.1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Box
@@ -1441,17 +1403,65 @@ export default function ProjectsPage() {
       }}>
         <Navbar />
 
-        {filteredProjects.map((project, index) => {
-          const isFirstSlide = index === 0;
+        {/* Page Header (Title) */}
+        <Container maxWidth="lg" sx={{ scrollSnapAlign: 'start' }}>
+          {renderHeader()}
+        </Container>
 
+        {/* Sticky Filters Container */}
+        <Box sx={{
+          position: 'sticky',
+          top: { xs: '50px', md: '90px' },
+          zIndex: 99,
+          background: 'var(--navbar-bg)',
+          backdropFilter: 'blur(5px)',
+          WebkitBackdropFilter: 'blur(5px)',
+          py: { xs: 1.5, md: 2 },
+          width: '100%',
+          borderBottom: '1px solid var(--copy-email-hover)',
+          transition: 'background-color 0.3s ease',
+        }}>
+          <Container maxWidth="lg">
+            <Box sx={{ display: 'flex', gap: { xs: 1, md: 2 }, flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+              {categories.map((cat) => (
+                <Button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  sx={{
+                    borderRadius: '50px',
+                    px: { xs: 2.5, md: 4 },
+                    py: { xs: 0.7, md: 1 },
+                    textTransform: 'none',
+                    fontWeight: 700,
+                    fontSize: { xs: '0.85rem', md: '0.95rem' },
+                    border: '2px solid var(--purple)',
+                    bgcolor: activeCategory === cat.id ? 'var(--purple)' : 'transparent',
+                    color: activeCategory === cat.id ? '#ffffff' : 'var(--text)',
+                    boxShadow: activeCategory === cat.id ? '0 4px 15px rgba(167, 73, 214, 0.4)' : 'none',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      bgcolor: activeCategory === cat.id ? 'var(--purple)' : 'rgba(167, 73, 214, 0.1)',
+                      transform: 'translateY(-1px)',
+                      boxShadow: activeCategory === cat.id ? '0 6px 20px rgba(167, 73, 214, 0.5)' : '0 4px 12px rgba(167, 73, 214, 0.15)',
+                    }
+                  }}
+                >
+                  {t(cat.translationKey)}
+                </Button>
+              ))}
+            </Box>
+          </Container>
+        </Box>
+
+        {filteredProjects.map((project) => {
           if (project.slug === 'bank-churn-analysis') {
-            return renderBankChurnProject(project, isFirstSlide);
+            return renderBankChurnProject(project);
           } else if (project.slug === 'ping-it') {
-            return renderLayout0(project, isFirstSlide);
+            return renderLayout0(project);
           } else if (project.slug === 'lingoda') {
-            return renderLayout1(project, isFirstSlide);
+            return renderLayout1(project);
           } else {
-            return renderLayout2(project, isFirstSlide);
+            return renderLayout2(project);
           }
         })}
       </Box>

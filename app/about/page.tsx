@@ -18,7 +18,7 @@ const fallbackMilestones = [
   {
     id: "m1",
     period: "2020-2022",
-    location: "KYIV",
+    location: "UKRAINE",
     position: 1,
     title: {
       EN: "Worked as an <strong>analytics assistant in retail</strong>, sales data, Excel reports, pricing analysis across 50 key accounts. First real experience turning messy business data into decisions people acted on.",
@@ -39,10 +39,10 @@ const fallbackMilestones = [
     location: "GERMANY",
     position: 2,
     title: {
-      EN: "Left Ukraine after Russia's full-scale invasion. Arrived in Germany, learned German, stabilized and made a decision: if I'm starting over anyway, I'm building what I've always wanted to build. Enrolled in <strong>Le Wagon's Full Stack Bootcamp</strong>, built production apps in teams, graduated.",
-      UA: "Покинула Україну після повномасштабного вторгнення Росії. Прибула до Німеччини, вивчила німецьку мову, стабілізувалася і прийняла рішення: якщо все одно починати спочатку, я будуватиму те, що завжди хотіла. Вступила до <strong>Le Wagon Full Stack буткемпу</strong>, створювала додатки в командах, випустилася.",
-      FR: "A quitté l'Ukraine après l'invasion à grande échelle de la Russie. Arrivée en Allemagne, apprentissage de l'allemand, stabilisation et prise de décision : si je recommence à zéro, je vais construire ce que j'ai toujours voulu. Inscription au <strong>bootcamp Full Stack de Le Wagon</strong>, développement d'applications en équipe, diplômée.",
-      DE: "Verließ die Ukraine nach der umfassenden Invasion Russlands. In Deutschland angekommen, Deutsch gelernt, stabilisiert und eine Entscheidung getroffen: Wenn ich schon neu anfange, baue ich das, was ich schon immer bauen wollte. Anmeldung zum <strong>Full Stack Bootcamp von Le Wagon</strong>, Erstellung von Produktions-Apps in Teams, Abschluss."
+      EN: "Left Ukraine after Russia's full-scale invasion. Arrived in Berlin, learned German, stabilized and made a decision: if I'm starting over anyway, I'm building what I've always wanted to build. Enrolled in <strong>Le Wagon's Full Stack Bootcamp</strong>, built production apps in teams, graduated.",
+      UA: "Покинула Україну після повномасштабного вторгнення Росії. Прибула до Берліна, вивчила німецьку мову, стабілізувалася і прийняла рішення: якщо все одно починати спочатку, я будуватиму те, що завжди хотіла. Вступила до <strong>Le Wagon Full Stack буткемпу</strong>, створювала додатки в командах, випустилася.",
+      FR: "A quitté l'Ukraine après l'invasion à grande échelle de la Russie. Arrivée à Berlin, apprentissage de l'allemand, stabilisation et prise de décision : si je recommence à zéro, je vais construire ce que j'ai toujours voulu. Inscription au <strong>bootcamp Full Stack de Le Wagon</strong>, développement d'applications en équipe, diplômée.",
+      DE: "Verließ die Ukraine nach der umfassenden Invasion Russlands. In Berlin angekommen, Deutsch gelernt, stabilisiert und eine Entscheidung getroffen: Wenn ich schon neu anfange, baue ich das, was ich schon immer bauen wollte. Anmeldung zum <strong>Full Stack Bootcamp von Le Wagon</strong>, Erstellung von Produktions-Apps in Teams, Abschluss."
     },
     subtext: {
       EN: null,
@@ -220,7 +220,7 @@ export default function AboutPage() {
 
   const getDotColor = (input: string) => {
     const text = (input || '').toUpperCase();
-    if (text.includes('KYIV')) return '#1ABCFE';
+    if (text.includes('KYIV') || text.includes('UKRAINE')) return '#1ABCFE';
     if (text.includes('GERMANY')) return '#FFC107';
     if (text.includes('CANADA')) return '#0ACF83';
     return '#1ABCFE';
