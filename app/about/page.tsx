@@ -247,13 +247,13 @@ export default function AboutPage() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          py: { xs: 8, md: 12 },
-          pb: { xs: 15, md: 20 }
+          pt: { xs: '90px', md: 12 },
+          pb: { xs: 8, md: 20 }
         }}>
           <Box sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '1.2fr 1fr' },
-            gap: { xs: 6, md: 10 },
+            gap: { xs: 4, md: 10 },
             alignItems: 'flex-start'
           }}>
             {/* Left column: About me */}
@@ -270,9 +270,9 @@ export default function AboutPage() {
               </Box>
             </Box>
 
-            {/* Right column: The journey */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, mt: { xs: 0, md: 5 } }}>
-              <Typography variant='h4' sx={{ fontWeight: 700, color: 'var(--blue)', fontSize: { xs: '1.5rem', md: '2rem' }, fontStyle: 'italic' }}>
+            {/* Right column: The journey — hidden on mobile (shown in its own snap section below) */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', gap: 2.5, mt: { md: 5 } }}>
+              <Typography variant='h4' sx={{ fontWeight: 700, color: 'var(--blue)', fontSize: { md: '2rem' }, fontStyle: 'italic' }}>
                 <strong>{t('about_journey_title')}</strong>
               </Typography>
 
@@ -325,7 +325,7 @@ export default function AboutPage() {
                         </Typography>
                         {/* Title */}
                         <Typography variant="body1" sx={{
-                          fontSize: { xs: '0.9rem', md: '0.98rem' },
+                          fontSize: { md: '0.98rem' },
                           lineHeight: 1.5,
                           color: 'var(--text)'
                         }} dangerouslySetInnerHTML={{ __html: itemTitle }} />
@@ -333,7 +333,7 @@ export default function AboutPage() {
                         {itemSubtext && (
                           <Typography variant="body2" sx={{
                             mt: 1,
-                            fontSize: { xs: '0.85rem', md: '0.9rem' },
+                            fontSize: { md: '0.9rem' },
                             lineHeight: 1.5,
                             color: 'var(--text)',
                             opacity: 0.75,
@@ -347,6 +347,90 @@ export default function AboutPage() {
                   );
                 })}
               </Box>
+            </Box>
+          </Box>
+        </Container>
+
+        {/* Секція "The Journey" — окрема snap-сторінка тільки на мобільному */}
+        <Container maxWidth="lg" sx={{
+          scrollSnapAlign: 'start',
+          minHeight: '100vh',
+          display: { xs: 'flex', md: 'none' },
+          flexDirection: 'column',
+          justifyContent: 'center',
+          pt: '90px',
+          pb: 8
+        }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+            <Typography variant='h4' sx={{ fontWeight: 700, color: 'var(--blue)', fontSize: '1.5rem', fontStyle: 'italic' }}>
+              <strong>{t('about_journey_title')}</strong>
+            </Typography>
+
+            {/* Timeline Container */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', position: 'relative', pl: 1, mt: 1 }}>
+              {milestones.map((item, index) => {
+                const isLast = index === milestones.length - 1;
+                const itemTitle = item.title?.[language] || item.title?.EN || "";
+                const itemSubtext = item.subtext?.[language] || item.subtext?.EN || "";
+                const dotColor = getDotColor(item.location || item.period);
+
+                return (
+                  <Box key={`mob-${item.id}`} sx={{ display: 'flex', gap: 3, position: 'relative' }}>
+                    {/* Left: Dot & Vertical line */}
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <Box sx={{
+                        width: '12px',
+                        height: '12px',
+                        borderRadius: '50%',
+                        bgcolor: dotColor,
+                        zIndex: 2,
+                        boxShadow: `0 0 8px ${dotColor}`,
+                        mt: '6px'
+                      }} />
+                      {!isLast && (
+                        <Box sx={{
+                          width: '2px',
+                          flexGrow: 1,
+                          bgcolor: 'var(--copy-email-hover)',
+                          my: 0.5,
+                          minHeight: '30px'
+                        }} />
+                      )}
+                    </Box>
+
+                    {/* Right: Content */}
+                    <Box sx={{ pb: isLast ? 0 : 4, flex: 1 }}>
+                      <Typography sx={{
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        color: 'var(--purple)',
+                        letterSpacing: '0.5px',
+                        textTransform: 'uppercase',
+                        mb: 0.5
+                      }}>
+                        {item.location ? `${item.location} · ${item.period}` : item.period}
+                      </Typography>
+                      <Typography variant="body1" sx={{
+                        fontSize: '0.9rem',
+                        lineHeight: 1.5,
+                        color: 'var(--text)'
+                      }} dangerouslySetInnerHTML={{ __html: itemTitle }} />
+                      {itemSubtext && (
+                        <Typography variant="body2" sx={{
+                          mt: 1,
+                          fontSize: '0.85rem',
+                          lineHeight: 1.5,
+                          color: 'var(--text)',
+                          opacity: 0.75,
+                          fontStyle: 'italic'
+                        }}>
+                          {itemSubtext}
+                        </Typography>
+                      )}
+                    </Box>
+                  </Box>
+                );
+              })}
             </Box>
           </Box>
         </Container>

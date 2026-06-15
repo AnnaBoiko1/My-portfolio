@@ -22,7 +22,7 @@ export function useScrollNavigation(nextPath: string | null, prevPath: string | 
                         // Unlock navigation after restoration and a buffer for inertia to dissipate
                         setTimeout(() => {
                             isNavigating.current = false;
-                        }, 500);
+                        }, 800);
                     } else {
                         isNavigating.current = false;
                     }
@@ -52,8 +52,15 @@ export function useScrollNavigation(nextPath: string | null, prevPath: string | 
             // But usually unmount happens first
             setTimeout(() => {
                 isNavigating.current = false;
-            }, 1000);
+            }, 1500);
         };
+
+        // Accumulated delta for wheel — requires intentional over-scroll before navigating
+        const WHEEL_THRESHOLD = 300; // px of accumulated delta needed
+        const RESET_DELAY = 200;     // ms of inactivity before resetting accumulated delta
+
+        let accumulatedDelta = 0;
+        let resetTimer: ReturnType<typeof setTimeout> | null = null;
 
         const handleWheel = (e: WheelEvent) => {
             const { scrollTop, scrollHeight, clientHeight } = container;
@@ -61,12 +68,32 @@ export function useScrollNavigation(nextPath: string | null, prevPath: string | 
             const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 2;
             const isAtTop = scrollTop <= 0;
 
-            if (e.deltaY > 0 && isAtBottom && nextPath) {
-                navigate(nextPath, 'down');
-            } else if (e.deltaY < 0 && isAtTop && prevPath) {
-                // Need to verify if the scroll is actually trying to go "past" the top
-                // Standard wheel deltaY is enough indication
-                navigate(prevPath, 'up');
+            const atEdge = (e.deltaY > 0 && isAtBottom && nextPath) ||
+                           (e.deltaY < 0 && isAtTop && prevPath);
+
+            if (!atEdge) {
+                // Not at the edge — reset accumulator
+                accumulatedDelta = 0;
+                if (resetTimer) clearTimeout(resetTimer);
+                return;
+            }
+
+            // Accumulate delta only when at the edge
+            accumulatedDelta += e.deltaY;
+
+            // Reset accumulator after inactivity (e.g. user pauses scrolling)
+            if (resetTimer) clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => {
+                accumulatedDelta = 0;
+            }, RESET_DELAY);
+
+            if (Math.abs(accumulatedDelta) >= WHEEL_THRESHOLD) {
+                accumulatedDelta = 0;
+                if (e.deltaY > 0 && isAtBottom && nextPath) {
+                    navigate(nextPath, 'down');
+                } else if (e.deltaY < 0 && isAtTop && prevPath) {
+                    navigate(prevPath, 'up');
+                }
             }
         };
 
@@ -84,9 +111,9 @@ export function useScrollNavigation(nextPath: string | null, prevPath: string | 
             const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 2;
             const isAtTop = scrollTop <= 0;
 
-            if (deltaY > 50 && isAtBottom && nextPath) {
+            if (deltaY > 80 && isAtBottom && nextPath) {
                 navigate(nextPath, 'down');
-            } else if (deltaY < -50 && isAtTop && prevPath) {
+            } else if (deltaY < -80 && isAtTop && prevPath) {
                 navigate(prevPath, 'up');
             }
         }
@@ -99,6 +126,7 @@ export function useScrollNavigation(nextPath: string | null, prevPath: string | 
             container.removeEventListener('wheel', handleWheel);
             container.removeEventListener('touchstart', handleTouchStart);
             container.removeEventListener('touchend', handleTouchEnd);
+            if (resetTimer) clearTimeout(resetTimer);
         };
     }, [nextPath, prevPath, router]);
 
