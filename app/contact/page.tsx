@@ -113,7 +113,7 @@ export default function ContactPage() {
                     </Box>
 
                     {/* Email address + inline actions */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', minWidth: 0 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5, flexWrap: 'wrap', minWidth: 0 }}>
                       <Typography variant='h5' sx={{
                         fontSize: { xs: '1rem', md: '1.2rem' },
                         textDecoration: 'underline',
@@ -129,7 +129,9 @@ export default function ContactPage() {
                           textDecorationColor: 'var(--blue)',
                         }
                       }}
-                        onClick={async () => {
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
                           try {
                             await navigator.clipboard.writeText('annaboiko1@icloud.com');
                             setCopied(true);
@@ -149,13 +151,15 @@ export default function ContactPage() {
 
                       {/* Inline actions */}
                       {copied ? (
-                        <Typography sx={{ fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                        <Typography sx={{ display: 'block', fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 600, whiteSpace: 'nowrap' }}>
                           {t('contact_copied')}
                         </Typography>
                       ) : (
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0, flexShrink: 0 }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0.8, flexShrink: 0 }}>
                           <Typography
-                            onClick={async () => {
+                            onClick={async (e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
                               try {
                                 await navigator.clipboard.writeText('annaboiko1@icloud.com');
                                 setCopied(true);
@@ -169,14 +173,17 @@ export default function ContactPage() {
                                 setCopied(true);
                               }
                             }}
-                            sx={{ fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', lineHeight: 1.6, '&:hover': { opacity: 0.7 } }}
+                            sx={{ display: 'block', fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', lineHeight: 1.6, '&:hover': { opacity: 0.7 } }}
                           >
                             {t('contact_copy')}
                           </Typography>
                           <Typography
                             component="a"
                             href="mailto:annaboiko1@icloud.com"
-                            sx={{ fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', textDecoration: 'none', lineHeight: 1.6, '&:hover': { opacity: 0.7 } }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                            sx={{ display: 'block', fontSize: '0.78rem', color: 'var(--blue)', fontWeight: 500, cursor: 'pointer', whiteSpace: 'nowrap', textDecoration: 'none', lineHeight: 1.6, '&:hover': { opacity: 0.7 } }}
                           >
                             {t('contact_email')}
                           </Typography>
