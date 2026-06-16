@@ -263,6 +263,7 @@ export default function AboutPage() {
   const containerRef = useScrollNavigation('/projects', '/');
   const { t, language } = useLanguage();
   const [visibleBubbles, setVisibleBubbles] = React.useState<boolean[]>([false, false, false, false]);
+  const [visibleTexts, setVisibleTexts] = React.useState<boolean[]>([false, false, false, false]);
   const timelineRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -270,7 +271,7 @@ export default function AboutPage() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Trigger bubbles one by one with stagger
+            // Trigger bubbles (circles) one by one
             [0, 1, 2, 3].forEach((i) => {
               setTimeout(() => {
                 setVisibleBubbles((prev) => {
@@ -278,8 +279,20 @@ export default function AboutPage() {
                   next[i] = true;
                   return next;
                 });
-              }, i * 900);
+              }, i * 600);
             });
+
+            // Trigger text descriptions sequentially after all bubbles and lines are drawn
+            [0, 1, 2, 3].forEach((i) => {
+              setTimeout(() => {
+                setVisibleTexts((prev) => {
+                  const next = [...prev];
+                  next[i] = true;
+                  return next;
+                });
+              }, 2400 + i * 800);
+            });
+
             observer.disconnect();
           }
         });
@@ -626,266 +639,292 @@ export default function AboutPage() {
           scrollSnapAlign: 'start',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           alignItems: 'flex-start',
-          pt: { xs: '100px', md: 0 },
-          pb: { xs: 8, md: 0 },
+          pt: { xs: '120px', md: 18 },
+          pb: { xs: 8, md: 8 },
         }}>
-          <Typography variant='h3' sx={{ mt: { xs: 0, md: -6 }, fontSize: { xs: '1.75rem', md: '2.5rem' } }}>
+          <Typography variant='h3' sx={{ mt: 0, fontSize: { xs: '1.75rem', md: '2.5rem' } }}>
             <strong>{t('about_create_meaningful')}</strong><span style={{ color: 'var(--blue)' }}>.</span>
           </Typography>
           <Typography variant="h4" sx={{ mb: 1, fontWeight: 600, position: 'relative', top: -16, lineHeight: 1 }}><span style={{ color: 'var(--blue)' }}>____</span></Typography>
 
 
-          {/* Animated Bubble Timeline */}
-          <Box ref={timelineRef} sx={{
+          {/* Wrapper for Timeline, Button and footer text to keep them aligned to the same 800px grid width */}
+          <Box sx={{
             width: '100%',
-            mt: { xs: 1, md: 2 },
-            mb: 4,
-            position: 'relative',
+            maxWidth: { xs: '100%', md: '800px' },
+            mx: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
           }}>
-            {/* Vertical center line — desktop only */}
-            <Box sx={{
-              display: { xs: 'none', md: 'block' },
-              position: 'absolute',
-              left: '50%',
-              top: 0,
-              bottom: 0,
-              width: '2px',
-              background: 'linear-gradient(to bottom, var(--purple), var(--blue))',
-              opacity: 0.25,
-              transform: 'translateX(-50%)',
-              zIndex: 0,
-            }} />
+            {/* Animated Bubble Timeline */}
+            <Box ref={timelineRef} sx={{
+              width: '100%',
+              mt: { xs: 1, md: 2 },
+              mb: 4,
+              position: 'relative',
+            }}>
+              {/* Vertical center line — desktop only */}
 
-            {([
-              { key: 'philosophy', label: 'Philosophy',       titleKey: 'about_card_philosophy_title' as TranslationKey, descKey: 'about_card_philosophy_desc' as TranslationKey, color: 'var(--purple)' },
-              { key: 'retail',     label: 'Retail analytics', titleKey: 'about_card_retail_title' as TranslationKey,     descKey: 'about_card_retail_desc' as TranslationKey,     color: 'var(--blue)' },
-              { key: 'wagon',      label: 'Web development',  titleKey: 'about_card_wagon_title' as TranslationKey,      descKey: 'about_card_wagon_desc' as TranslationKey,      color: 'var(--purple)' },
-              { key: 'starting',   label: 'Starting over',    titleKey: 'about_card_starting_title' as TranslationKey,   descKey: 'about_card_starting_desc' as TranslationKey,   color: 'var(--blue)' },
-            ]).map((item, index) => {
-              const isLeft = index % 2 === 0; // alternates: right, left, right, left
-              const visible = visibleBubbles[index];
+              {([
+                { key: 'philosophy', label: 'Philosophy',       titleKey: 'about_card_philosophy_title' as TranslationKey, descKey: 'about_card_philosophy_desc' as TranslationKey, color: 'var(--purple)' },
+                { key: 'retail',     label: 'Retail analytics', titleKey: 'about_card_retail_title' as TranslationKey,     descKey: 'about_card_retail_desc' as TranslationKey,     color: 'var(--blue)' },
+                { key: 'wagon',      label: 'Web development',  titleKey: 'about_card_wagon_title' as TranslationKey,      descKey: 'about_card_wagon_desc' as TranslationKey,      color: 'var(--purple)' },
+                { key: 'starting',   label: 'Starting over',    titleKey: 'about_card_starting_title' as TranslationKey,   descKey: 'about_card_starting_desc' as TranslationKey,   color: 'var(--blue)' },
+              ]).map((item, index) => {
+                const isLeft = index % 2 === 0; // alternates: right, left, right, left
+                const bubbleOnLeft = index % 2 === 1; // Row 1 & 3 bubble on left, Row 0 & 2 bubble on right
+                const visible = visibleBubbles[index];
 
-              return (
-                <Box key={item.key} sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: { xs: 'flex-start', md: isLeft ? 'flex-start' : 'flex-end' },
-                  mb: { xs: 0, md: 2 },
-                  position: 'relative',
-                  zIndex: 1,
-                }}>
+                return (
+                  <Box key={item.key} sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}>
 
-                  {/* === DESKTOP LAYOUT === */}
-                  <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', width: '100%', flexDirection: isLeft ? 'row' : 'row-reverse' }}>
-
-                    {/* Description side */}
-                    <Box sx={{ flex: 1, px: 3 }}>
-                      <TypewriterText
-                        text={t(item.descKey)}
-                        visible={visible}
-                        delay={index * 900 + 300}
-                        fontSize="0.95rem"
-                        textAlign={isLeft ? 'right' : 'left'}
-                      />
-                    </Box>
-
-                    {/* Bubble */}
-                    <Box sx={{
-                      width: 120,
-                      height: 120,
-                      borderRadius: '50%',
-                      flexShrink: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      textAlign: 'center',
-                      background: `radial-gradient(circle at 35% 35%, ${item.color}22, ${item.color}08)`,
-                      border: `2.5px solid ${item.color}`,
-                      boxShadow: visible ? `0 0 24px ${item.color}44, 0 0 6px ${item.color}22` : 'none',
-                      opacity: visible ? 1 : 0,
-                      transform: visible ? 'scale(1)' : 'scale(0.4)',
-                      transition: 'opacity 0.9s cubic-bezier(0.34,1.56,0.64,1), transform 0.9s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.9s ease',
-                      transitionDelay: `${index * 900}ms`,
-                      zIndex: 2,
-                      p: 1,
-                    }}>
-                      <Typography sx={{
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
-                        color: 'var(--text)',
-                        lineHeight: 1.3,
-                        letterSpacing: '0.02em',
-                        textTransform: 'uppercase',
-                      }}>
-                        {item.label}
-                      </Typography>
-                    </Box>
-
-                    {/* Empty opposite side */}
-                    <Box sx={{ flex: 1 }} />
-                  </Box>
-
-                  {/* === MOBILE LAYOUT — zigzag row + SVG S-curve connector === */}
-                  <Box sx={{ display: { xs: 'block', md: 'none' }, width: '100%' }}>
-
-                    {/* Zigzag row: bubble alternates left/right */}
-                    <Box sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      flexDirection: isLeft ? 'row' : 'row-reverse',
-                      gap: 2,
-                    }}>
-                      {/* Bubble */}
+                    {/* === DESKTOP LAYOUT === */}
+                    <Box sx={{ display: { xs: 'none', md: 'block' }, width: '100%' }}>
                       <Box sx={{
-                        width: 76,
-                        height: 76,
-                        borderRadius: '50%',
-                        flexShrink: 0,
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        textAlign: 'center',
-                        background: `radial-gradient(circle at 35% 35%, ${item.color}22, ${item.color}08)`,
-                        border: `2px solid ${item.color}`,
-                        boxShadow: visible ? `0 0 20px ${item.color}55` : 'none',
-                        opacity: visible ? 1 : 0,
-                        transform: visible ? 'scale(1)' : 'scale(0.3)',
-                        transition: 'opacity 0.9s cubic-bezier(0.34,1.56,0.64,1), transform 0.9s cubic-bezier(0.34,1.56,0.64,1)',
-                        transitionDelay: `${index * 900}ms`,
-                        p: 0.8,
+                        flexDirection: bubbleOnLeft ? 'row' : 'row-reverse',
+                        gap: 4,
                       }}>
-                        <Typography sx={{
-                          fontSize: '0.62rem',
-                          fontWeight: 700,
-                          color: 'var(--text)',
-                          lineHeight: 1.3,
-                          letterSpacing: '0.02em',
-                          textTransform: 'uppercase',
+                        {/* Bubble */}
+                        <Box sx={{
+                          width: 120,
+                          height: 120,
+                          borderRadius: '50%',
+                          flexShrink: 0,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                          background: `radial-gradient(circle at 35% 35%, ${item.color}22, ${item.color}08)`,
+                          border: `2.5px solid ${item.color}`,
+                          boxShadow: visible ? `0 0 24px ${item.color}44, 0 0 6px ${item.color}22` : 'none',
+                          opacity: visible ? 1 : 0,
+                          transform: visible ? 'scale(1)' : 'scale(0.4)',
+                          transition: 'opacity 0.9s cubic-bezier(0.34,1.56,0.64,1), transform 0.9s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.9s ease',
+                          transitionDelay: '0ms',
+                          zIndex: 2,
+                          p: 1,
                         }}>
-                          {item.label}
-                        </Typography>
+                          <Typography sx={{
+                            fontSize: '0.85rem',
+                            fontWeight: 700,
+                            color: 'var(--text)',
+                            lineHeight: 1.2,
+                            letterSpacing: '0.02em',
+                            textTransform: 'uppercase',
+                          }}>
+                            {item.label}
+                          </Typography>
+                        </Box>
+
+                        {/* Description */}
+                        <Box sx={{ flex: 1 }}>
+                          <TypewriterText
+                            text={t(item.descKey)}
+                            visible={visibleTexts[index]}
+                            delay={0}
+                            fontSize="1.1rem"
+                            textAlign={bubbleOnLeft ? 'left' : 'right'}
+                          />
+                        </Box>
                       </Box>
 
-                      {/* Description */}
-                      <Box sx={{ flex: 1 }}>
-                        <TypewriterText
-                          text={t(item.descKey)}
-                          visible={visible}
-                          delay={index * 900 + 250}
-                          fontSize="0.88rem"
-                          textAlign={isLeft ? 'left' : 'right'}
-                        />
-                      </Box>
+                      {/* SVG S-curve connector between this bubble and the next (desktop only) */}
+                      {index < 3 && (
+                        <svg
+                          viewBox="0 0 800 60"
+                          style={{ width: '100%', height: '36px', display: 'block', overflow: 'visible' }}
+                          preserveAspectRatio="none"
+                        >
+                          <path
+                            d={!bubbleOnLeft
+                              ? 'M 740 4 C 740 56 60 4 60 56'   // right bubble → left bubble
+                              : 'M 60 4 C 60 56 740 4 740 56'   // left bubble → right bubble
+                            }
+                            fill="none"
+                            style={{
+                              stroke: item.color,
+                              strokeWidth: 1.5,
+                              strokeOpacity: visible ? 0.35 : 0,
+                              transition: 'stroke-opacity 0.5s ease',
+                              transitionDelay: '300ms',
+                            } as React.CSSProperties}
+                          />
+                        </svg>
+                      )}
                     </Box>
 
-                    {/* SVG S-curve connector between this bubble and the next */}
-                    {index < 3 && (
-                      <svg
-                        viewBox="0 0 300 56"
-                        style={{ width: '100%', height: '32px', display: 'block', overflow: 'visible' }}
-                        preserveAspectRatio="none"
-                      >
-                        <path
-                          d={isLeft
-                            ? 'M 38 4 C 38 52 262 4 262 52'   // left bubble → right bubble
-                            : 'M 262 4 C 262 52 38 4 38 52'  // right bubble → left bubble
-                          }
-                          fill="none"
-                          style={{
-                            stroke: item.color,
-                            strokeWidth: 1.5,
-                            strokeOpacity: visible ? 0.35 : 0,
-                            transition: 'stroke-opacity 0.5s ease',
-                            transitionDelay: `${index * 900 + 350}ms`,
-                          } as React.CSSProperties}
-                        />
-                      </svg>
-                    )}
+                    {/* === MOBILE LAYOUT — zigzag row + SVG S-curve connector === */}
+                    <Box sx={{ display: { xs: 'block', md: 'none' }, width: '100%' }}>
+
+                      {/* Zigzag row: bubble alternates left/right */}
+                      <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexDirection: isLeft ? 'row' : 'row-reverse',
+                        gap: 2,
+                      }}>
+                        {/* Bubble */}
+                        <Box sx={{
+                          width: 86,
+                          height: 86,
+                          borderRadius: '50%',
+                          flexShrink: 0,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                          background: `radial-gradient(circle at 35% 35%, ${item.color}22, ${item.color}08)`,
+                          border: `2px solid ${item.color}`,
+                          boxShadow: visible ? `0 0 20px ${item.color}55` : 'none',
+                          opacity: visible ? 1 : 0,
+                          transform: visible ? 'scale(1)' : 'scale(0.3)',
+                          transition: 'opacity 0.9s cubic-bezier(0.34,1.56,0.64,1), transform 0.9s cubic-bezier(0.34,1.56,0.64,1)',
+                          transitionDelay: '0ms',
+                          p: 0.8,
+                        }}>
+                          <Typography sx={{
+                            fontSize: '0.72rem',
+                            fontWeight: 700,
+                            color: 'var(--text)',
+                            lineHeight: 1.2,
+                            letterSpacing: '0.02em',
+                            textTransform: 'uppercase',
+                          }}>
+                            {item.label}
+                          </Typography>
+                        </Box>
+
+                        {/* Description */}
+                        <Box sx={{ flex: 1 }}>
+                          <TypewriterText
+                            text={t(item.descKey)}
+                            visible={visibleTexts[index]}
+                            delay={0}
+                            fontSize="0.95rem"
+                            textAlign={isLeft ? 'left' : 'right'}
+                          />
+                        </Box>
+                      </Box>
+
+                      {/* SVG S-curve connector between this bubble and the next */}
+                      {index < 3 && (
+                        <svg
+                          viewBox="0 0 300 56"
+                          style={{ width: '100%', height: '32px', display: 'block', overflow: 'visible' }}
+                          preserveAspectRatio="none"
+                        >
+                          <path
+                            d={isLeft
+                              ? 'M 43 4 C 43 52 257 4 257 52'   // left bubble → right bubble
+                              : 'M 257 4 C 257 52 43 4 43 52'  // right bubble → left bubble
+                            }
+                            fill="none"
+                            style={{
+                              stroke: item.color,
+                              strokeWidth: 1.5,
+                              strokeOpacity: visible ? 0.35 : 0,
+                              transition: 'stroke-opacity 0.5s ease',
+                              transitionDelay: '300ms',
+                            } as React.CSSProperties}
+                          />
+                        </svg>
+                      )}
+                    </Box>
                   </Box>
-                </Box>
-              );
-            })}
+                );
+              })}
 
+            </Box>
+
+            <Button
+              onClick={() => {
+                window.location.href = 'mailto:annaboiko1@icloud.com?subject=Let%27s%20work%20together&body=Hi%20Anna,%0A%0AI%20am%20interested%20in%20working%20together.%0A%0ABest%20regards';
+              }}
+              sx={{
+                alignSelf: { xs: 'stretch', sm: 'flex-end' },
+                mt: 2,
+                px: 6,
+                py: 1,
+                mb: { xs: 4, md: 4 },
+                fontSize: '1.3rem',
+                fontWeight: 550,
+                width: { xs: '100%', sm: 300 },
+                color: 'var(--btn-text)',
+                bgcolor: 'transparent',
+                textTransform: 'none',
+                display: 'inline-flex',
+                textShadow: `
+                  1px 1px 1px rgba(0,0,0,0.3),        
+                  0 0 3px rgba(255,255,255,0.4)
+                  `,
+
+
+                backgroundImage: `linear-gradient(
+                  45deg, 
+                  transparent 25%, 
+                  var(--btn-stripes) 25%, 
+                  var(--btn-stripes) 50%, 
+                  transparent 50%, 
+                  transparent 75%, 
+                  var(--btn-stripes) 75%
+                )`,
+
+                backgroundSize: '15px 15px',
+
+
+
+                position: 'relative',
+                backgroundOrigin: 'padding-box',
+
+                borderRadius: 3, // Adjusted roundness
+
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  inset: 0,
+                  borderRadius: 3, // Match parent border-radius
+                  padding: '3px',
+                  background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  pointerEvents: 'none',
+                },
+
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 10px 30px var(--red)',
+                  bgcolor: 'var(--btn-hover-bg)',
+                }
+              }}
+            >
+              {t('about_get_in_touch')}
+            </Button>
+
+            <Typography sx={{
+              mt: 3,
+              mb: { xs: 6, md: 4 },
+              fontSize: { xs: '0.98rem', md: '1.15rem' },
+              lineHeight: 1.8,
+              color: 'var(--text)',
+              opacity: 0.6,
+              fontStyle: 'italic',
+              maxWidth: 560,
+              alignSelf: 'flex-start',
+            }}>
+              I am a developer who understands data and can build tools that answer the right questions. An analyst who can code doesn&apos;t wait for someone else to clean the dataset or build the dashboard. That&apos;s where I sit, and it&apos;s where I want to keep growing.
+            </Typography>
           </Box>
-
-          <Button
-            onClick={() => {
-              window.location.href = 'mailto:annaboiko1@icloud.com?subject=Let%27s%20work%20together&body=Hi%20Anna,%0A%0AI%20am%20interested%20in%20working%20together.%0A%0ABest%20regards';
-            }}
-            sx={{
-              mt: 2,
-              px: 6,
-              py: 1,
-              mb: { xs: 4, md: 15 },
-              fontSize: '1.3rem',
-              fontWeight: 550,
-              width: { xs: '100%', sm: 300 },
-              color: 'var(--btn-text)',
-              bgcolor: 'transparent',
-              textTransform: 'none',
-              display: 'inline-flex',
-              textShadow: `
-                1px 1px 1px rgba(0,0,0,0.3),        
-                0 0 3px rgba(255,255,255,0.4)
-                `,
-
-
-              backgroundImage: `linear-gradient(
-                45deg, 
-                transparent 25%, 
-                var(--btn-stripes) 25%, 
-                var(--btn-stripes) 50%, 
-                transparent 50%, 
-                transparent 75%, 
-                var(--btn-stripes) 75%
-              )`,
-
-              backgroundSize: '15px 15px',
-
-
-
-              position: 'relative',
-              backgroundOrigin: 'padding-box',
-
-              borderRadius: 3, // Adjusted roundness
-
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                inset: 0,
-                borderRadius: 3, // Match parent border-radius
-                padding: '3px',
-                background: 'linear-gradient(45deg, #9333ea, #8e24aa)',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                pointerEvents: 'none',
-              },
-
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: '0 10px 30px var(--red)',
-                bgcolor: 'var(--btn-hover-bg)',
-              }
-            }}
-          >
-            {t('about_get_in_touch')}
-          </Button>
-
-          <Typography sx={{
-            mt: 3,
-            mb: { xs: 6, md: 4 },
-            fontSize: { xs: '0.9rem', md: '1rem' },
-            lineHeight: 1.8,
-            color: 'var(--text)',
-            opacity: 0.6,
-            fontStyle: 'italic',
-            maxWidth: 560,
-          }}>
-            I am a developer who understands data and can build tools that answer the right questions. An analyst who can code doesn&apos;t wait for someone else to clean the dataset or build the dashboard. That&apos;s where I sit, and it&apos;s where I want to keep growing.
-          </Typography>
         </Container>
       </Box >
 
