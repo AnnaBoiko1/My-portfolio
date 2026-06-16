@@ -25,7 +25,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Anna Boiko | Portfolio",
-  description: "Full-stack web developer from Ukraine based in Toronto",
+  description: "Full-stack developer & data analyst in Toronto · Python · React · Azure AI-900",
 };
 
 export default function RootLayout({

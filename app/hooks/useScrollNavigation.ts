@@ -108,19 +108,20 @@ export function useScrollNavigation(nextPath: string | null, prevPath: string | 
             const touchEndY = e.changedTouches[0].clientY;
             const deltaY = touchStartY - touchEndY; // Positive = swipe up (scroll down)
             const { scrollTop, scrollHeight, clientHeight } = container;
-            const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 2;
+            // Use a larger tolerance (20px) to account for snap-scroll rounding on mobile
+            const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 20;
             const isAtTop = scrollTop <= 0;
 
-            if (deltaY > 80 && isAtBottom && nextPath) {
+            if (deltaY > 120 && isAtBottom && nextPath) {
                 navigate(nextPath, 'down');
-            } else if (deltaY < -80 && isAtTop && prevPath) {
+            } else if (deltaY < -120 && isAtTop && prevPath) {
                 navigate(prevPath, 'up');
             }
         }
 
         container.addEventListener('wheel', handleWheel);
-        container.addEventListener('touchstart', handleTouchStart);
-        container.addEventListener('touchend', handleTouchEnd);
+        container.addEventListener('touchstart', handleTouchStart, { passive: true });
+        container.addEventListener('touchend', handleTouchEnd, { passive: true });
 
         return () => {
             container.removeEventListener('wheel', handleWheel);
