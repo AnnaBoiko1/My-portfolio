@@ -454,6 +454,7 @@ export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = React.useState<'all' | 'development' | 'data-analytics'>('all');
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const [activeHoverImage, setActiveHoverImage] = React.useState<string | null>(null);
+  const [zoomedImage, setZoomedImage] = React.useState<string | null>(null);
   const galleryScrollRef = React.useRef<HTMLDivElement>(null);
 
   const handleGalleryScroll = (e: React.UIEvent<HTMLDivElement>) => {
@@ -868,19 +869,19 @@ export default function ProjectsPage() {
   const renderLayout0 = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
-        scrollSnapAlign: 'start',
-        minHeight: '100vh',
+        scrollSnapAlign: { xs: 'none', md: 'start' },
+        minHeight: { xs: 'auto', md: '100vh' },
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         gap: 2,
-        pb: 20
+        pb: { xs: 6, md: 20 }
       }}>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 0, md: 4 }, mt: { xs: 14, md: 22 } }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 0, md: 4 }, mt: { xs: 3, md: 22 } }}>
           {/* MOBILE ONLY: Side-by-side layout */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', gap: 1, mt: 0, alignItems: 'center' }}>
             <Box sx={{ width: '50%', ml: -1 }}>
-              <ImageCarousel images={project.images} alt={project.name?.[language] || project.name?.EN || ""} slideWidth="100%" />
+              <ImageCarousel images={project.images} alt={project.name?.[language] || project.name?.EN || ""} slideWidth="100%" height="240px" />
             </Box>
             <Box sx={{ width: '60%' }}>
               <Typography variant='h6' sx={{ mb: 1, fontWeight: 700 }}>
@@ -912,9 +913,15 @@ export default function ProjectsPage() {
   const renderLayout1 = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
-        scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
+        scrollSnapAlign: { xs: 'none', md: 'start' },
+        minHeight: { xs: 'auto', md: '100vh' },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: 2,
+        pb: { xs: 6, md: 20 }
       }}>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: { xs: 14, md: 22 } }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', gap: { xs: 0, md: 4 }, mt: { xs: 3, md: 22 } }}>
           <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, minWidth: 0, position: 'relative', zIndex: 10, pt: { md: 6 } }}>
             <Box sx={{ order: { xs: 1, md: 1 }, width: '100%' }}>
               {renderProjectDetailsTop(project)}
@@ -927,7 +934,7 @@ export default function ProjectsPage() {
           <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, width: '100%' }}>
             {/* MOBILE: Carousel */}
             <Box sx={{ order: { xs: 2, md: 2 }, display: { xs: 'block', md: 'none' }, width: '100%', mt: { xs: -4, md: 2 } }}>
-              <ImageCarousel images={project.images} alt={project.name?.[language] || project.name?.EN || ""} objectFit="contain" />
+              <ImageCarousel images={project.images} alt={project.name?.[language] || project.name?.EN || ""} objectFit="contain" height={{ xs: '200px', sm: '280px' }} />
             </Box>
             {/* DESKTOP: Grid */}
             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -948,9 +955,15 @@ export default function ProjectsPage() {
   const renderLayout2 = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
-        scrollSnapAlign: 'start', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, pb: 20
+        scrollSnapAlign: { xs: 'none', md: 'start' },
+        minHeight: { xs: 'auto', md: '100vh' },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: 2,
+        pb: { xs: 6, md: 20 }
       }}>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 0, md: 4 }, mt: { xs: 14, md: 22 } }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 0, md: 4 }, mt: { xs: 3, md: 22 } }}>
           <Box sx={{ display: { xs: 'contents', md: 'block' }, flex: 1, maxWidth: { md: 600 }, width: '100%' }}>
             <Box sx={{ order: { xs: 2, md: 1 }, width: '100%', mt: { xs: 2, md: 0 } }}>
               <Image src={project.images?.[0] || '/img_placeholder.png'} alt={project.name?.[language] || project.name?.EN || ""} width={300} height={300} priority style={{
@@ -974,21 +987,22 @@ export default function ProjectsPage() {
   const renderBankChurnProject = (project: any) => {
     return (
       <Container key={project.id} maxWidth="lg" sx={{
-        scrollSnapAlign: 'start',
-        minHeight: '100vh',
+        scrollSnapAlign: { xs: 'none', md: 'start' },
+        minHeight: { xs: 'auto', md: '100vh' },
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         gap: 2,
-        pb: 20
+        pb: { xs: 6, md: 20 }
       }}>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'stretch', gap: { xs: 4, md: 6 }, mt: { xs: 14, md: 22 }, width: '100%' }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'stretch', gap: { xs: 2.5, md: 6 }, mt: { xs: 3, md: 22 }, width: '100%' }}>
           {/* Left panel: Horizontal scrollable screenshots gallery */}
-          <Box sx={{ position: 'relative', flex: 1.1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Box sx={{ position: 'relative', flex: 1.1, minWidth: 0, display: { xs: 'contents', md: 'flex' }, flexDirection: 'column', gap: 2 }}>
             <Box
               ref={galleryScrollRef}
               onScroll={handleGalleryScroll}
               sx={{
+                order: { xs: 2, md: 1 },
                 width: '100%',
                 height: { xs: '260px', md: '380px' },
                 overflowX: 'scroll',
@@ -1100,7 +1114,7 @@ export default function ProjectsPage() {
             </Box>
 
             {/* Pagination Controls below the gallery (never overlaps content!) */}
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2, mt: 0.5 }}>
+            <Box sx={{ order: { xs: 3, md: 2 }, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2, mt: 0.5 }}>
               <Button
                 onClick={() => {
                   if (galleryScrollRef.current) {
@@ -1227,8 +1241,8 @@ export default function ProjectsPage() {
           </Box>
 
           {/* Right panel: Description and details */}
-          <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minWidth: 0, position: 'relative' }}>
-            <Box>
+          <Box sx={{ flex: 1, display: { xs: 'contents', md: 'flex' }, flexDirection: 'column', justifyContent: 'space-between', minWidth: 0, position: 'relative' }}>
+            <Box sx={{ order: { xs: 1, md: 1 }, width: '100%' }}>
               {/* Organization and Category badges */}
               <Box sx={{ display: 'flex', gap: 1.5, mb: 1.5, flexWrap: 'wrap' }}>
                 <Box sx={{
@@ -1297,7 +1311,7 @@ export default function ProjectsPage() {
             </Box>
 
             {/* Tech Tags & Buttons */}
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, gap: 3, borderTop: '1px solid var(--copy-email-hover)', pt: 2, mt: 2 }}>
+            <Box sx={{ order: { xs: 4, md: 2 }, display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, gap: 3, borderTop: '1px solid var(--copy-email-hover)', pt: 2, mt: { xs: 1, md: 2 }, width: '100%' }}>
               {/* Tech Tags */}
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {project.tags?.map((tag: string, i: number) => (
@@ -1394,7 +1408,7 @@ export default function ProjectsPage() {
       <Box ref={containerRef} sx={{
         height: '100%',
         overflowY: 'scroll',
-        scrollSnapType: 'y mandatory',
+        scrollSnapType: { xs: 'none', md: 'y mandatory' },
         scrollBehavior: 'smooth',
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
@@ -1404,21 +1418,21 @@ export default function ProjectsPage() {
         <Navbar />
 
         {/* Page Header (Title) */}
-        <Container maxWidth="lg" sx={{ scrollSnapAlign: 'start' }}>
+        <Container maxWidth="lg" sx={{ scrollSnapAlign: { xs: 'none', md: 'start' } }}>
           {renderHeader()}
         </Container>
 
         {/* Sticky Filters Container */}
         <Box sx={{
-          position: 'sticky',
-          top: { xs: '50px', md: '90px' },
+          position: { xs: 'static', md: 'sticky' },
+          top: { xs: 'auto', md: '90px' },
           zIndex: 99,
-          background: 'var(--navbar-bg)',
-          backdropFilter: 'blur(5px)',
-          WebkitBackdropFilter: 'blur(5px)',
+          background: { xs: 'transparent', md: 'var(--navbar-bg)' },
+          backdropFilter: { xs: 'none', md: 'blur(5px)' },
+          WebkitBackdropFilter: { xs: 'none', md: 'blur(5px)' },
           py: { xs: 1.5, md: 2 },
           width: '100%',
-          borderBottom: '1px solid var(--copy-email-hover)',
+          borderBottom: { xs: 'none', md: '1px solid var(--copy-email-hover)' },
           transition: 'background-color 0.3s ease',
         }}>
           <Container maxWidth="lg">
@@ -1453,16 +1467,34 @@ export default function ProjectsPage() {
           </Container>
         </Box>
 
-        {filteredProjects.map((project) => {
+        {filteredProjects.map((project, index) => {
+          let projectComponent;
           if (project.slug === 'bank-churn-analysis') {
-            return renderBankChurnProject(project);
+            projectComponent = renderBankChurnProject(project);
           } else if (project.slug === 'ping-it') {
-            return renderLayout0(project);
+            projectComponent = renderLayout0(project);
           } else if (project.slug === 'lingoda') {
-            return renderLayout1(project);
+            projectComponent = renderLayout1(project);
           } else {
-            return renderLayout2(project);
+            projectComponent = renderLayout2(project);
           }
+
+          return (
+            <React.Fragment key={project.id}>
+              {index > 0 && (
+                <Container maxWidth="lg" sx={{ my: { xs: 4, md: 8 } }}>
+                  <Box sx={{
+                    height: '2px',
+                    bgcolor: 'var(--blue)',
+                    opacity: 0.4,
+                    borderRadius: '2px',
+                    boxShadow: '0 0 8px rgba(96, 231, 241, 0.4)'
+                  }} />
+                </Container>
+              )}
+              {projectComponent}
+            </React.Fragment>
+          );
         })}
       </Box>
     </>
