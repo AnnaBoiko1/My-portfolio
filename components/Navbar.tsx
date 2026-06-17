@@ -12,14 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
-// Imports
-import {
-    ClerkProvider,
-    SignedIn,
-    SignedOut,
-    UserButton,
-    useClerk, // Import useClerk
-} from '@clerk/nextjs'
+
 import { useLanguage } from '@/context/LanguageContext';
 import { useTheme } from '@/context/ThemeContext';
 import { LanguageCode } from '@/lib/translations';
@@ -33,7 +26,6 @@ const NavigationSeparator = ({ sx }: { sx?: any }) => (
 export default function Navbar() {
     const pathname = usePathname();
     const router = useRouter();
-    const { openSignIn, signOut } = useClerk(); // Get methods
 
     // --- Theme State ---
     const { theme, toggleTheme } = useTheme();
@@ -56,22 +48,6 @@ export default function Navbar() {
         setLanguageAnchorEl(event.currentTarget);
     };
 
-    // --- Sign Out Confirmation ---
-    const [showSignOutDialog, setShowSignOutDialog] = useState(false);
-
-    const handleSignOutClick = () => {
-        setShowSignOutDialog(true);
-    };
-
-    const handleSignOutConfirm = async () => {
-        setShowSignOutDialog(false);
-        await signOut();
-        router.push('/');
-    };
-
-    const handleSignOutCancel = () => {
-        setShowSignOutDialog(false);
-    };
 
     const handleLanguageClose = (lang?: LanguageCode) => {
         setLanguageAnchorEl(null);
@@ -143,104 +119,62 @@ export default function Navbar() {
 
                 {/* Right: Auth, Theme & Language */}
                 <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end', alignItems: 'center' }}>
-                    {/* Auth Button */}
-                    {/* Auth Buttons */}
-                    <SignedOut>
-                        <Button
-                            onClick={() => openSignIn()}
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center',
+                    <Button
+                        href="/Anna Boiko_Resume data analyst.pdf"
+                        download="Anna Boiko_Resume data analyst.pdf"
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            bgcolor: 'transparent',
+                            p: 0,
+                            minWidth: 0,
+                            '&:hover': {
                                 bgcolor: 'transparent',
-                                p: 0,
-                                minWidth: 0,
-                                '&:hover': {
-                                    bgcolor: 'transparent',
-                                    opacity: 0.8,
-                                    '& .MuiTypography-root': {
-                                        background: 'var(--blue)',
-                                        backgroundClip: 'text',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        color: 'transparent'
-                                    }
-                                }
-                            }}
-                        >
-                            <img
-                                src="/log_in.svg"
-                                alt={t('nav_signup')}
-                                width={32}
-                                height={32}
-                                style={{ marginBottom: '0px' }}
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: '0.65rem',
-                                    fontWeight: 700,
-                                    textTransform: 'none',
-                                    lineHeight: 1,
-                                    background: 'var(--purple)',
-                                    backgroundClip: 'text',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    color: 'transparent'
-                                }}
-                            >
-                                {t('nav_signup')}
-                            </Typography>
-                        </Button>
-                    </SignedOut>
-                    <SignedIn>
-                        <Button
-                            onClick={handleSignOutClick}
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                bgcolor: 'transparent',
-                                p: 0,
-                                minWidth: 0,
-                                '&:hover': {
-                                    bgcolor: 'transparent',
-                                    opacity: 0.8,
-                                    '& .MuiTypography-root': {
-                                        background: 'var(--purple)',
-                                        backgroundClip: 'text',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        color: 'transparent'
-                                    }
-                                }
-                            }}
-                        >
-                            <img
-                                src="/log_out.svg"
-                                alt={t('nav_signout')}
-                                width={32}
-                                height={32}
-                                style={{ marginBottom: '0px' }}
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: '0.65rem',
-                                    fontWeight: 700,
-                                    textTransform: 'none',
-                                    lineHeight: 1,
+                                opacity: 0.8,
+                                '& .MuiTypography-root': {
                                     background: 'var(--blue)',
                                     backgroundClip: 'text',
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                     color: 'transparent'
-                                }}
-                            >
-                                {t('nav_signout')}
-                            </Typography>
-                        </Button>
-                    </SignedIn>
+                                }
+                            }
+                        }}
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            style={{ marginBottom: '0px', color: 'var(--text)' }}
+                        >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <Typography
+                            sx={{
+                                fontSize: '0.65rem',
+                                fontWeight: 700,
+                                textTransform: 'none',
+                                lineHeight: 1,
+                                background: 'var(--purple)',
+                                backgroundClip: 'text',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                color: 'transparent',
+                                mt: 0.5
+                            }}
+                        >
+                            {t('nav_download_cv')}
+                        </Typography>
+                    </Button>
 
                     {/* Theme Toggle */}
                     <Box
@@ -401,102 +335,62 @@ export default function Navbar() {
                 // backdropFilter: 'blur(5px)',
             }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <SignedOut>
-                        <Button
-                            onClick={() => openSignIn()}
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center',
+                    <Button
+                        href="/Anna Boiko_Resume data analyst.pdf"
+                        download="Anna Boiko_Resume data analyst.pdf"
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            bgcolor: 'transparent',
+                            p: 0,
+                            minWidth: 0,
+                            '&:hover': {
                                 bgcolor: 'transparent',
-                                p: 0,
-                                minWidth: 0,
-                                '&:hover': {
-                                    bgcolor: 'transparent',
-                                    opacity: 0.8,
-                                    '& .MuiTypography-root': {
-                                        background: 'var(--blue)',
-                                        backgroundClip: 'text',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        color: 'transparent'
-                                    }
-                                }
-                            }}
-                        >
-                            <img
-                                src="/log_in.svg"
-                                alt={t('nav_signup')}
-                                width={28}
-                                height={28}
-                                style={{ marginBottom: '0px' }}
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: '0.6rem',
-                                    fontWeight: 700,
-                                    textTransform: 'none',
-                                    lineHeight: 1,
-                                    background: 'var(--purple)',
-                                    backgroundClip: 'text',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    color: 'transparent'
-                                }}
-                            >
-                                {t('nav_signup')}
-                            </Typography>
-                        </Button>
-                    </SignedOut>
-                    <SignedIn>
-                        <Button
-                            onClick={handleSignOutClick}
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                bgcolor: 'transparent',
-                                p: 0,
-                                minWidth: 0,
-                                '&:hover': {
-                                    bgcolor: 'transparent',
-                                    opacity: 0.8,
-                                    '& .MuiTypography-root': {
-                                        background: 'var(--purple)',
-                                        backgroundClip: 'text',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        color: 'transparent'
-                                    }
-                                }
-                            }}
-                        >
-                            <img
-                                src="/log_out.svg"
-                                alt={t('nav_signout')}
-                                width={28}
-                                height={28}
-                                style={{ marginBottom: '0px' }}
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: '0.6rem',
-                                    fontWeight: 700,
-                                    textTransform: 'none',
-                                    lineHeight: 1,
+                                opacity: 0.8,
+                                '& .MuiTypography-root': {
                                     background: 'var(--blue)',
                                     backgroundClip: 'text',
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                     color: 'transparent'
-                                }}
-                            >
-                                {t('nav_signout')}
-                            </Typography>
-                        </Button>
-                    </SignedIn>
+                                }
+                            }
+                        }}
+                    >
+                        <svg
+                            width="28"
+                            height="28"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            style={{ marginBottom: '0px', color: 'var(--text)' }}
+                        >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <Typography
+                            sx={{
+                                fontSize: '0.6rem',
+                                fontWeight: 700,
+                                textTransform: 'none',
+                                lineHeight: 1,
+                                background: 'var(--purple)',
+                                backgroundClip: 'text',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                color: 'transparent',
+                                mt: 0.5
+                            }}
+                        >
+                            {t('nav_download_cv')}
+                        </Typography>
+                    </Button>
                 </Box>
 
                 <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
@@ -532,64 +426,7 @@ export default function Navbar() {
                 </Box>
             </Box>
 
-            {/* Sign Out Confirmation Dialog */}
-            <Dialog
-                open={showSignOutDialog}
-                onClose={handleSignOutCancel}
-                PaperProps={{
-                    sx: {
-                        bgcolor: 'var(--blue)',
-                        borderRadius: '20px',
-                        border: '3px solid var(--purple)',
-                        p: 2,
-                        color: 'var(--text)'
-                    }
-                }}
-            >
-                <DialogTitle sx={{ fontWeight: 800, fontSize: '1.5rem', color: 'var(--purple)', textAlign: 'center' }}>
-                    {t('nav_signout')}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText sx={{
-                        color: theme === 'dark' ? '#0f0f23' : 'var(--text)',
-                        fontSize: '1.1rem',
-                        fontWeight: 500,
-                        textAlign: 'center'
-                    }}>
-                        {t('signout_confirm_message')}
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions sx={{ gap: 2, p: 3, justifyContent: 'center' }}>
-                    <Button
-                        onClick={handleSignOutCancel}
-                        sx={{
-                            bgcolor: '#f0f9ff',
-                            color: 'var(--purple)',
-                            textTransform: 'none',
-                            fontWeight: 700,
-                            borderRadius: '10px',
-                            px: 2,
-                            '&:hover': { bgcolor: '#e0f2fe' }
-                        }}
-                    >
-                        {t('signout_confirm_cancel')}
-                    </Button>
-                    <Button
-                        onClick={handleSignOutConfirm}
-                        variant="contained"
-                        sx={{
-                            bgcolor: 'var(--purple)',
-                            color: '#fff',
-                            textTransform: 'none',
-                            fontWeight: 700,
-                            borderRadius: '10px',
-                            '&:hover': { bgcolor: 'var(--purple)', opacity: 0.9 }
-                        }}
-                    >
-                        {t('signout_confirm_button')}
-                    </Button>
-                </DialogActions>
-            </Dialog>
+
         </>
     );
 }
