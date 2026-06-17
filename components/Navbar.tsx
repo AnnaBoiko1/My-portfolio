@@ -359,7 +359,7 @@ export default function Navbar() {
                 right: 0,
                 display: { xs: 'flex', md: 'none' },
                 justifyContent: 'center',
-                pb: 5,
+                pb: 2,
                 zIndex: 100,
                 pointerEvents: 'none',
             }}>
