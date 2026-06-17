@@ -11,6 +11,7 @@ import { useUser } from '@clerk/nextjs';
 import { SxProps, Theme } from '@mui/material/styles';
 
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { useLanguage } from '@/context/LanguageContext';
 import { useScrollNavigation } from './hooks/useScrollNavigation';
 
@@ -249,6 +250,7 @@ export default function Home() {
             </Button>
           </Box>
         </Container>
+        <Footer />
       </Box>
 
 

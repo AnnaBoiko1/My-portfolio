@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import ContactForm from "@/components/ContactForm";
 import { useLanguage } from '@/context/LanguageContext';
 import { useScrollNavigation } from '../hooks/useScrollNavigation';
@@ -342,6 +343,7 @@ export default function ContactPage() {
             <ContactForm />
           </Box>
         </Container>
+        <Footer />
       </Box>
 
 

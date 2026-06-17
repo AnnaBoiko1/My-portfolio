@@ -17,16 +17,12 @@ export default function Footer() {
     <Box
       sx={{
         width: '100%',
-        py: 0,
+        py: 2,
         px: 2,
         mt: 'auto',
         textAlign: 'right',
-        position: 'fixed',
-        bottom: 0,
-        left: 0, right: 0,
-        fontSize: '0.1rem'
-
-
+        fontSize: '0.1rem',
+        scrollSnapAlign: 'end',
       }}
     >
       <Typography variant="caption"

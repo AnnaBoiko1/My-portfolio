@@ -13,6 +13,7 @@ import Menu from '@mui/material/Menu';
 import ImageCarousel from '@/components/ImageCarousel';
 
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { useLanguage } from '@/context/LanguageContext';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -1496,6 +1497,7 @@ export default function ProjectsPage() {
             </React.Fragment>
           );
         })}
+        <Footer />
       </Box>
     </>
   );

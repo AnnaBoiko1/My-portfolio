@@ -43,7 +43,6 @@ export default function RootLayout({
                 <React.Suspense fallback={null}>
                   {children}
                 </React.Suspense>
-                <Footer />
               </BackgroundCanva>
               <HireMe />
             </ThemeProvider>

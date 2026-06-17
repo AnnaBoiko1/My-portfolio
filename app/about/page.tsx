@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { useLanguage } from '@/context/LanguageContext';
 import { useScrollNavigation } from '../hooks/useScrollNavigation';
 import { supabaseClient } from '@/lib/supabaseClient';
@@ -926,6 +927,7 @@ export default function AboutPage() {
             </Typography>
           </Box>
         </Container>
+        <Footer />
       </Box >
 
 
