@@ -359,21 +359,32 @@ export default function Navbar() {
                 right: 0,
                 display: { xs: 'flex', md: 'none' },
                 justifyContent: 'center',
-                pb: 6,
-                alignItems: 'center',
-                gap: 2,
+                pb: 5,
                 zIndex: 100,
-                backgroundColor: 'transparent',
-                pt: 2,
-                height: '80px',
+                pointerEvents: 'none',
             }}>
-                <Button onClick={() => router.push('/')} sx={mobileNavLinkStyle('/')}>{t('nav_home')}</Button>
-                <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-                <Button onClick={() => router.push('/about')} sx={mobileNavLinkStyle('/about')}>{t('nav_about')}</Button>
-                <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-                <Button onClick={() => router.push('/projects')} sx={mobileNavLinkStyle('/projects')}>{t('nav_projects')}</Button>
-                <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
-                <Button onClick={() => router.push('/contact')} sx={mobileNavLinkStyle('/contact')}>{t('nav_contact')}</Button>
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: { xs: 1.5, sm: 2 },
+                    pointerEvents: 'auto',
+                    background: 'var(--navbar-bg)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    px: { xs: 2, sm: 3 },
+                    py: 1.2,
+                    borderRadius: '50px',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    border: '1px solid rgba(167, 73, 214, 0.15)'
+                }}>
+                    <Button onClick={() => router.push('/')} sx={mobileNavLinkStyle('/')}>{t('nav_home')}</Button>
+                    <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+                    <Button onClick={() => router.push('/about')} sx={mobileNavLinkStyle('/about')}>{t('nav_about')}</Button>
+                    <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+                    <Button onClick={() => router.push('/projects')} sx={mobileNavLinkStyle('/projects')}>{t('nav_projects')}</Button>
+                    <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
+                    <Button onClick={() => router.push('/contact')} sx={mobileNavLinkStyle('/contact')}>{t('nav_contact')}</Button>
+                </Box>
             </Box>
 
             {/* Mobile Top Bar for Auth/Theme/Lang (Optional, adding since users asked for these features and desktop only shows them) */}
