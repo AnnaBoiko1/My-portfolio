@@ -371,11 +371,9 @@ export default function Navbar() {
                     background: 'var(--navbar-bg)',
                     backdropFilter: 'blur(12px)',
                     WebkitBackdropFilter: 'blur(12px)',
-                    px: { xs: 2, sm: 3 },
-                    py: 1.2,
-                    borderRadius: '50px',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
-                    border: '1px solid rgba(167, 73, 214, 0.15)'
+                    px: { xs: 1, sm: 2 },
+                    py: 0.5,
+                    borderRadius: '12px'
                 }}>
                     <Button onClick={() => router.push('/')} sx={mobileNavLinkStyle('/')}>{t('nav_home')}</Button>
                     <NavigationSeparator sx={{ fontSize: '1rem', fontWeight: 300, color: 'var(--text)', lineHeight: 1 }} />
