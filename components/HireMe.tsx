@@ -21,11 +21,15 @@ export default function HireMe() {
     <div className="fixed bottom-28 right-6 md:right-20 z-1000 flex items-center gap-1">
       <button
         onClick={handleClick}
-        className="w-25 md:w-32 h-10 md:h-12 gap-1 bg-primary-blue hover:bg-primary-red text-white rounded-full transition-all duration-300 flex items-center justify-center p-0"
+        className="w-auto h-10 md:h-12 gap-1.5 md:gap-1 text-white rounded-full transition-all duration-300 flex items-center justify-center p-0 bg-transparent hover:bg-transparent"
         title={t('hire_me')}
-
       >
-        <span className="font-semibold text-sm md:text-lg whitespace-nowrap center" style={{ color: 'var(--text)' }}>
+        <span 
+          className="font-semibold text-sm md:text-lg whitespace-nowrap px-1 py-0.5 md:p-0 rounded-[8px] md:rounded-none max-md:backdrop-blur-md max-md:bg-[var(--navbar-bg)]" 
+          style={{ 
+            color: 'var(--text)',
+          }}
+        >
           {t('hire_me')}
         </span>
         <FontAwesomeIcon icon={faCommentDots} size="2x"
