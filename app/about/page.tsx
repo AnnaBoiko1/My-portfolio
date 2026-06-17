@@ -923,7 +923,7 @@ export default function AboutPage() {
               maxWidth: 560,
               alignSelf: 'flex-start',
             }}>
-              I am a developer who understands data and can build tools that answer the right questions. An analyst who can code doesn&apos;t wait for someone else to clean the dataset or build the dashboard. That&apos;s where I sit, and it&apos;s where I want to keep growing.
+              {t('about_create_description')}
             </Typography>
           </Box>
         </Container>
