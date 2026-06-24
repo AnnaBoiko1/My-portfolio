@@ -628,6 +628,8 @@ export default function AboutPage() {
             >
               <CertificatePill label={t('cert_lewagon_chip')} tooltipTitle={t('cert_lewagon_tooltip')} />
               <CertificatePill label={t('cert_npower_chip')} tooltipTitle={t('cert_npower_tooltip')} />
+              <CertificatePill label={t('cert_ibm_chip')} tooltipTitle={t('cert_ibm_tooltip')} />
+              <CertificatePill label={t('cert_azure_chip')} tooltipTitle={t('cert_azure_tooltip')} />
               <CertificatePill label={t('cert_philo_chip')} tooltipTitle={t('cert_philo_tooltip')} />
               <CertificatePill label={t('cert_firstaid_chip')} tooltipTitle={t('cert_firstaid_tooltip')} />
             </ToolbeltCard>
