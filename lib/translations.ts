@@ -103,7 +103,7 @@ export const translations = {
         cert_lewagon_chip: "Le Wagon Full Stack · Berlin",
         cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Le Wagon Bootcamp</strong></a><br />Full Stack Web Dev<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Batch #1698</em></a>",
         cert_firstaid_chip: "First Aid CPR/AED Level C",
-        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>First Aid & CPR/AED</strong></a><br />Level C (BL)<br />Valid until 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Safety Certification</em></a>",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>First Aid & CPR/AED</strong></a><br />Level C (BL)<br />Valid until 2029<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Safety Certification</em></a>",
     },
     UA: {
         // Navbar
@@ -208,7 +208,7 @@ export const translations = {
         cert_lewagon_chip: "Le Wagon Full Stack · Берлін",
         cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Le Wagon Буткемп</strong></a><br />Full Stack Web-розробка<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Група #1698</em></a>",
         cert_firstaid_chip: "Перша допомога СЛР/AED Рівень C",
-        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Перша допомога та СЛР/AED</strong></a><br />Рівень C (BL)<br />Дійсний до 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Сертифікат з безпеки</em></a>",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Перша допомога та СЛР/AED</strong></a><br />Рівень C (BL)<br />Дійсний до 2029<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Сертифікат з безпеки</em></a>",
     },
     FR: {
         // Navbar
@@ -313,7 +313,7 @@ export const translations = {
         cert_lewagon_chip: "Le Wagon Full Stack · Berlin",
         cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Bootcamp Le Wagon</strong></a><br />Développement Web Full Stack<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Promotion #1698</em></a>",
         cert_firstaid_chip: "Premiers Secours RCR/DEA Niveau C",
-        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Premiers Secours & RCR/DEA</strong></a><br />Niveau C (BL)<br />Valide jusqu'en 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Certificat de sécurité</em></a>",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Premiers Secours & RCR/DEA</strong></a><br />Niveau C (BL)<br />Valide jusqu'en 2029<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Certificat de sécurité</em></a>",
     },
     DE: {
         // Navbar
@@ -418,7 +418,7 @@ export const translations = {
         cert_lewagon_chip: "Le Wagon Full Stack · Berlin",
         cert_lewagon_tooltip: "<a href=\"https://www.lewagon.com/montreal\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Le Wagon Bootcamp</strong></a><br />Full Stack Web-Entwicklung<br />Ruby on Rails, JS, SQL<br /><a href=\"/certs/ lewagon-fullstack.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Kohorte #1698</em></a>",
         cert_firstaid_chip: "Erste Hilfe HLW/AED Stufe C",
-        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Erste Hilfe & HLW/AED</strong></a><br />Stufe C (BL)<br />Gültig bis 2026<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Sicherheitszertifikat</em></a>",
+        cert_firstaid_tooltip: "<a href=\"https://firstaid4everyone.ca\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><strong>Erste Hilfe & HLW/AED</strong></a><br />Stufe C (BL)<br />Gültig bis 2029<br /><a href=\"/certs/ first-aid-cpr.pdf .pdf\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: #fff; text-decoration: underline;\"><em>Sicherheitszertifikat</em></a>",
     }
 };
 
